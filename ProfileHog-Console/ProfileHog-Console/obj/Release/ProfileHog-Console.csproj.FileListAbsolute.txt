@@ -1,0 +1,6 @@
+C:\Users\Dylan\Documents\Visual Studio 2015\Projects\ProfileHog-Console\ProfileHog-Console\bin\Release\ProfileHog-Console.exe.config
+C:\Users\Dylan\Documents\Visual Studio 2015\Projects\ProfileHog-Console\ProfileHog-Console\bin\Release\ProfileHog-Console.exe
+C:\Users\Dylan\Documents\Visual Studio 2015\Projects\ProfileHog-Console\ProfileHog-Console\bin\Release\ProfileHog-Console.pdb
+C:\Users\Dylan\Documents\Visual Studio 2015\Projects\ProfileHog-Console\ProfileHog-Console\bin\Release\OpenHardwareMonitorLib.dll
+C:\Users\Dylan\Documents\Visual Studio 2015\Projects\ProfileHog-Console\ProfileHog-Console\obj\Release\ProfileHog-Console.exe
+C:\Users\Dylan\Documents\Visual Studio 2015\Projects\ProfileHog-Console\ProfileHog-Console\obj\Release\ProfileHog-Console.pdb

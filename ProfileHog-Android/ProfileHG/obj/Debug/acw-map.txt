@@ -1,0 +1,12 @@
+ProfileHG.MainActivity, ProfileHG;md56bb0d634f8e536edeba3342d13f3ff08.MainActivity
+ProfileHG.MainActivity, ProfileHG, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md56bb0d634f8e536edeba3342d13f3ff08.MainActivity
+ProfileHG.MainActivity;md56bb0d634f8e536edeba3342d13f3ff08.MainActivity
+profilehg.MainActivity;md56bb0d634f8e536edeba3342d13f3ff08.MainActivity
+ProfileHG.DataCollection, ProfileHG;md56bb0d634f8e536edeba3342d13f3ff08.DataCollection
+ProfileHG.DataCollection, ProfileHG, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md56bb0d634f8e536edeba3342d13f3ff08.DataCollection
+ProfileHG.DataCollection;md56bb0d634f8e536edeba3342d13f3ff08.DataCollection
+profilehg.DataCollection;md56bb0d634f8e536edeba3342d13f3ff08.DataCollection
+ProfileHG.UpdateProcesses, ProfileHG;md56bb0d634f8e536edeba3342d13f3ff08.UpdateProcesses
+ProfileHG.UpdateProcesses, ProfileHG, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md56bb0d634f8e536edeba3342d13f3ff08.UpdateProcesses
+ProfileHG.UpdateProcesses;md56bb0d634f8e536edeba3342d13f3ff08.UpdateProcesses
+profilehg.UpdateProcesses;md56bb0d634f8e536edeba3342d13f3ff08.UpdateProcesses

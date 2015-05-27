@@ -1,0 +1,7 @@
+c:\users\dylan\documents\visual studio 2015\Projects\ProfileHog-Console\ProfileHog-Console\bin\Debug\ProfileHog-Console.exe.config
+c:\users\dylan\documents\visual studio 2015\Projects\ProfileHog-Console\ProfileHog-Console\bin\Debug\ProfileHog-Console.exe
+c:\users\dylan\documents\visual studio 2015\Projects\ProfileHog-Console\ProfileHog-Console\bin\Debug\ProfileHog-Console.pdb
+c:\users\dylan\documents\visual studio 2015\Projects\ProfileHog-Console\ProfileHog-Console\obj\Debug\ProfileHog-Console.csprojResolveAssemblyReference.cache
+c:\users\dylan\documents\visual studio 2015\Projects\ProfileHog-Console\ProfileHog-Console\obj\Debug\ProfileHog-Console.exe
+c:\users\dylan\documents\visual studio 2015\Projects\ProfileHog-Console\ProfileHog-Console\obj\Debug\ProfileHog-Console.pdb
+C:\Users\Dylan\Documents\Visual Studio 2015\Projects\ProfileHog-Console\ProfileHog-Console\bin\Debug\OpenHardwareMonitorLib.dll

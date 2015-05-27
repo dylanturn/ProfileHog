@@ -1,0 +1,17 @@
+C:\Users\Dylan\Documents\Projects\ProfileHG\ProfileHG\bin\Debug\ProfileHG.dll
+C:\Users\Dylan\Documents\Projects\ProfileHG\ProfileHG\bin\Debug\ProfileHG.pdb
+C:\Users\Dylan\Documents\Projects\ProfileHG\ProfileHG\bin\Debug\ProfileHG.dll.mdb
+C:\Users\Dylan\Documents\Projects\ProfileHG\ProfileHG\bin\Debug\com.companyname.profilehg.apk
+C:\Users\Dylan\Documents\Projects\ProfileHG\ProfileHG\bin\Debug\com.companyname.profilehg-Signed.apk
+C:\Users\Dylan\Documents\Projects\ProfileHG\ProfileHG\obj\Debug\ProfileHG.dll
+C:\Users\Dylan\Documents\Projects\ProfileHG\ProfileHG\obj\Debug\ProfileHG.pdb
+C:\Users\Dylan\Documents\Projects\ProfileHG\ProfileHG\obj\Debug\android\bin\com.companyname.profilehg.apk
+C:\Users\Dylan\Documents\Projects\ProfileHG\ProfileHG\obj\Debug\res\layout\main.xml
+C:\Users\Dylan\Documents\Projects\ProfileHG\ProfileHG\obj\Debug\res\values\strings.xml
+C:\Users\Dylan\Documents\Projects\ProfileHG\ProfileHG\obj\Debug\res\drawable-hdpi\icon.png
+C:\Users\Dylan\Documents\Projects\ProfileHG\ProfileHG\obj\Debug\res\drawable-mdpi\icon.png
+C:\Users\Dylan\Documents\Projects\ProfileHG\ProfileHG\obj\Debug\res\drawable-xhdpi\icon.png
+C:\Users\Dylan\Documents\Projects\ProfileHG\ProfileHG\obj\Debug\res\drawable-xxhdpi\icon.png
+C:\Users\Dylan\Documents\Projects\ProfileHG\ProfileHG\obj\Debug\res\drawable-xxxhdpi\icon.png
+C:\Users\Dylan\Documents\Projects\ProfileHG\ProfileHG\obj\Debug\R.cs.flag
+C:\Users\Dylan\Documents\Projects\ProfileHG\ProfileHG\obj\Debug\uploadflags.txt
