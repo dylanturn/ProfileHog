@@ -158,67 +158,82 @@ namespace ProfileHG
 
 				data = Encoding.ASCII.GetString (cleanRecieve);
 				JsonObject jsonCounters = null;
+
 				try{
+					
 					JsonValue value = JsonValue.Parse(data);
 					jsonCounters = value as JsonObject;
 
+					foreach (JsonObject processesObject in jsonCounters["Prosesses"]) {
+						int index = processInformation.FindIndex(pInfo => pInfo.Id == (UInt32)processesObject ["Id"]);
+						if (index >= 0) 
+						{
+							processInformation[index].Id = (UInt32)processesObject ["Id"];
+							processInformation[index].Name = (string)processesObject ["Name"];
+							processInformation[index].Responding = (bool)processesObject["Responding"];
+							processInformation[index].CpuUsed = (int)processesObject["CpuUsed"];
+							processInformation[index].RamUsed = (int)processesObject["RamUsed"];
+							processInformation[index].DiskUsed = (int)processesObject["DiskUsed"];
+							processInformation[index].NetworkUsed = (int)processesObject["NetworkUsed"];
+						}
+						else{
+							ProcessInformation thisProcess = new ProcessInformation ();
+							thisProcess.Id = (UInt32)processesObject ["Id"];
+							thisProcess.Name = (string)processesObject ["Name"];
+							thisProcess.Responding = (bool)processesObject["Responding"];
+							thisProcess.CpuUsed = (int)processesObject["CpuUsed"];
+							thisProcess.RamUsed = (int)processesObject["RamUsed"];
+							thisProcess.DiskUsed = (int)processesObject["DiskUsed"];
+							thisProcess.NetworkUsed = (int)processesObject["NetworkUsed"];
+							processInformation.Add (thisProcess);
+						}
+					}
 
-				foreach (JsonObject processesObject in jsonCounters["Prosesses"]) {
-					ProcessInformation thisProcess = new ProcessInformation ();
-					thisProcess.Name = (string)processesObject ["Name"];
-					thisProcess.Status = (string)processesObject["Status"];
-					thisProcess.CpuUsed = (int)processesObject["CpuUsed"];
-					thisProcess.RamUsed = (int)processesObject["RamUsed"];
-					thisProcess.DiskUsed = (int)processesObject["DiskUsed"];
-					thisProcess.NetworkUsed = (int)processesObject["NetworkUsed"];
-					processInformation.Add (thisProcess);
-				}
-
-				foreach (JsonObject hardwareObject in jsonCounters["Hardware"]) {
-					
-					if (((string)hardwareObject ["Type"] == "GpuNvidia") || ((string)hardwareObject ["Type"] == "GpuAti")){
-						foreach (JsonObject sensorObject in hardwareObject["Sensors"]) {
-							if ((sensorObject ["Type"] == "Load") && (sensorObject ["Name"] == "GPU Core")) {
-								gpuCoreCounter.setCurrentValue (Convert.ToInt32 ((float?) sensorObject ["Value"]));
+					foreach (JsonObject hardwareObject in jsonCounters["Hardware"]) {
+						
+						if (((string)hardwareObject ["Type"] == "GpuNvidia") || ((string)hardwareObject ["Type"] == "GpuAti")){
+							foreach (JsonObject sensorObject in hardwareObject["Sensors"]) {
+								if ((sensorObject ["Type"] == "Load") && (sensorObject ["Name"] == "GPU Core")) {
+									gpuCoreCounter.setCurrentValue (Convert.ToInt32 ((float?) sensorObject ["Value"]));
+								}
+								if ((sensorObject ["Type"] == "Load") && (sensorObject ["Name"] == "GPU Memory")) {
+									gpuMEMCounter.setCurrentValue (Convert.ToInt32 ((float?) sensorObject ["Value"]));
+								}
 							}
-							if ((sensorObject ["Type"] == "Load") && (sensorObject ["Name"] == "GPU Memory")) {
-								gpuMEMCounter.setCurrentValue (Convert.ToInt32 ((float?) sensorObject ["Value"]));
+						}
+
+						if ((string)hardwareObject ["Type"] == "CPU") {
+							foreach (JsonObject sensorObject in hardwareObject["Sensors"]) {
+								if ((sensorObject ["Type"] == "Load") && (sensorObject ["Name"] == "CPU Total")) {
+									cpuCounter.setCurrentValue (Convert.ToInt32 ((float?) sensorObject ["Value"]));
+								}
+							}
+						}
+
+						if ((string)hardwareObject ["Type"] == "RAM") {
+							foreach (JsonObject sensorObject in hardwareObject["Sensors"]) {
+								if ((sensorObject ["Type"] == "Data") && (sensorObject ["Name"] == "Used Memory")) {
+									ramCounter.setCurrentValue (Convert.ToInt32 (((float?) sensorObject ["Value"])*1024)); //multiply by 1024 because the used ram is reported in GB
+								}
+							}
+						}
+
+						if ((string)hardwareObject ["Type"] == "DISK") {
+							foreach (JsonObject sensorObject in hardwareObject["Sensors"]) {
+								if ((sensorObject ["Type"] == "Data") && (sensorObject ["Name"] == "DiskReads")) {
+									diskReadCounter.setCurrentValue (Convert.ToInt32 ((float?) sensorObject ["Value"]));
+								}
+								if ((sensorObject ["Type"] == "Data") && (sensorObject ["Name"] == "DiskWrites")) {
+									diskWriteCounter.setCurrentValue (Convert.ToInt32 ((float?) sensorObject ["Value"]));
+								}
+								if ((sensorObject ["Type"] == "Data") && (sensorObject ["Name"] == "DiskActive")) {
+									diskActiveCounter.setCurrentValue (Convert.ToInt32 ((float?) sensorObject ["Value"]));
+								}
 							}
 						}
 					}
 
-					if ((string)hardwareObject ["Type"] == "CPU") {
-						foreach (JsonObject sensorObject in hardwareObject["Sensors"]) {
-							if ((sensorObject ["Type"] == "Load") && (sensorObject ["Name"] == "CPU Total")) {
-								cpuCounter.setCurrentValue (Convert.ToInt32 ((float?) sensorObject ["Value"]));
-							}
-						}
-					}
-
-					if ((string)hardwareObject ["Type"] == "RAM") {
-						foreach (JsonObject sensorObject in hardwareObject["Sensors"]) {
-							if ((sensorObject ["Type"] == "Data") && (sensorObject ["Name"] == "Used Memory")) {
-								ramCounter.setCurrentValue (Convert.ToInt32 (((float?) sensorObject ["Value"])*1024)); //multiply by 1024 because the used ram is reported in GB
-							}
-						}
-					}
-
-					if ((string)hardwareObject ["Type"] == "DISK") {
-						foreach (JsonObject sensorObject in hardwareObject["Sensors"]) {
-							if ((sensorObject ["Type"] == "Data") && (sensorObject ["Name"] == "DiskReads")) {
-								diskReadCounter.setCurrentValue (Convert.ToInt32 ((float?) sensorObject ["Value"]));
-							}
-							if ((sensorObject ["Type"] == "Data") && (sensorObject ["Name"] == "DiskWrites")) {
-								diskWriteCounter.setCurrentValue (Convert.ToInt32 ((float?) sensorObject ["Value"]));
-							}
-							if ((sensorObject ["Type"] == "Data") && (sensorObject ["Name"] == "DiskActive")) {
-								diskActiveCounter.setCurrentValue (Convert.ToInt32 ((float?) sensorObject ["Value"]));
-							}
-						}
-					}
-				}
-
-				Thread.Sleep (500);
+					Thread.Sleep (500);
 				}
 				catch(Exception error){
 					Console.WriteLine ("Byte Length: " + cleanRecieve.Length);

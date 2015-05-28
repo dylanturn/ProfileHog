@@ -27,6 +27,7 @@ namespace ProfileHG
 		DataCollection dataCollection = new DataCollection ();
 		Task uiUpdateTask;
 		LinearLayout activeButtonLayout;
+		DPIScaling dpiScaling;
 
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -37,8 +38,11 @@ namespace ProfileHG
 			dataCollection.OnStartCommand (this.Intent, StartCommandFlags.Retry, 0);
 			activeButtonLayout = FindViewById<LinearLayout> (Resource.Id.activeButtonLayout);
 
+			dpiScaling = new DPIScaling (this);
 
 			ShowGraph ();
+
+
 
 			Task quickViewUpdateTask = new Task( () => new UpdateQuickView (dataCollection, this).StartUIUpdate (),TaskCreationOptions.LongRunning);
 			quickViewUpdateTask.Start();
@@ -61,9 +65,8 @@ namespace ProfileHG
 
 		}
 
-		public static int getDPI(int size, DisplayMetrics metrics){
-			return (size * Convert.ToInt32(metrics.DensityDpi)) / Convert.ToInt32(DisplayMetrics.DensityDefault);        
-		}
+
+
 
 		private void ShowGraph(){
 			LinearLayout summaryButtonLayout = FindViewById<LinearLayout> (Resource.Id.summaryLayout);
@@ -75,7 +78,7 @@ namespace ProfileHG
 
 			DisplayMetrics metrics = new DisplayMetrics();         
 			WindowManager.DefaultDisplay.GetMetrics(metrics);
-			int height = getDPI(30, metrics);
+			int height = dpiScaling.GetDPI(30);
 
 			summaryParams.Height = height;
 			summaryButtonLayout.AddView(activeButtonLayout,1);
@@ -94,7 +97,7 @@ namespace ProfileHG
 
 			DisplayMetrics metrics = new DisplayMetrics();         
 			WindowManager.DefaultDisplay.GetMetrics(metrics);
-			int height = getDPI(30, metrics);
+			int height = dpiScaling.GetDPI(30);
 
 			detailParams.Height = height;
 			detailsButtonLayout.AddView(activeButtonLayout,1);
@@ -119,7 +122,7 @@ namespace ProfileHG
 
 			DisplayMetrics metrics = new DisplayMetrics();         
 			WindowManager.DefaultDisplay.GetMetrics(metrics);
-			int height = getDPI(30, metrics);
+			int height = dpiScaling.GetDPI(30);
 
 			processesParams.Height = height;
 			processesButtonLayout.AddView(activeButtonLayout,1);
@@ -127,7 +130,11 @@ namespace ProfileHG
 			FrameLayout frameLayout = FindViewById<FrameLayout> (Resource.Id.frameLayout1);
 			frameLayout.RemoveAllViews ();
 			LayoutInflater.Inflate(Resource.Layout.ProcessesLayout, frameLayout,true);
-			CreateListView (dataCollection.processInformation);
+
+			UpdateProcesses updateProcesses = new UpdateProcesses (dataCollection, frameLayout, this, this);
+			uiUpdateTask = new Task( () => updateProcesses.StartUIUpdate(),TaskCreationOptions.LongRunning);
+			uiUpdateTask.Start();
+			//CreateListView (dataCollection.processInformation);
 		}
 
 		private void CreateListView(List<ProcessInformation> newProcesses){
@@ -147,7 +154,7 @@ namespace ProfileHG
 				TableRow.LayoutParams textParams = new TableRow.LayoutParams ();
 				DisplayMetrics metrics = new DisplayMetrics();         
 				WindowManager.DefaultDisplay.GetMetrics(metrics);
-				textParams.LeftMargin = getDPI (5, metrics);
+				textParams.LeftMargin = dpiScaling.GetDPI (5);
 
 				if (thisProcess.Name.Length > 20) {
 					processName.Text = thisProcess.Name.Substring (0, 17) + "...";
@@ -158,10 +165,6 @@ namespace ProfileHG
 					processName.LayoutParameters = textParams;
 					processName.SetTextSize (ComplexUnitType.Dip, 12);
 				}
-
-				TextView processStatus = new TextView (this);
-				processStatus.SetTextSize (ComplexUnitType.Dip, 12);
-				processStatus.Text = thisProcess.Status;
 
 				TextView processCPU = new TextView (this);
 				processCPU.SetTextSize (ComplexUnitType.Dip, 12);
@@ -184,7 +187,6 @@ namespace ProfileHG
 				processNetwork.Gravity = GravityFlags.Center;
 
 				processRow.AddView (processName);
-				processRow.AddView (processStatus);
 				processRow.AddView (processCPU);
 				processRow.AddView (processRAM);
 				processRow.AddView (processDisk);

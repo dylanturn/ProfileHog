@@ -8,8 +8,9 @@ namespace ProfileHog_Console
 {
     public class ProcessInformation
     {
+        public UInt32 Id;
         public string Name;
-        public string Status;
+        public bool Responding;
         public int RamUsed;
         public int CpuUsed;
         public int DiskUsed;

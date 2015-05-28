@@ -265,20 +265,19 @@ public final class R {
         public static final int profilehogbackground=0x7f0200fb;
     }
     public static final class id {
-        public static final int CpuHeader=0x7f05004d;
+        public static final int CpuHeader=0x7f05004c;
         public static final int DetailsLayout=0x7f050000;
-        public static final int DiskHeader=0x7f05004f;
+        public static final int DiskHeader=0x7f05004e;
         public static final int GraphLayout=0x7f050025;
         public static final int HeaderRow=0x7f05004a;
         public static final int MenuBarLayout=0x7f05002b;
         public static final int NameHeader=0x7f05004b;
-        public static final int NetworkHeader=0x7f050050;
+        public static final int NetworkHeader=0x7f05004f;
         public static final int ProcessListLayout=0x7f050049;
         public static final int ProcessesLayout=0x7f050034;
         public static final int ProcessesText=0x7f050035;
         public static final int ProcessesView=0x7f050036;
-        public static final int RamHeader=0x7f05004e;
-        public static final int StatusHeader=0x7f05004c;
+        public static final int RamHeader=0x7f05004d;
         public static final int TitleBarLayout=0x7f050028;
         public static final int activeButtonLayout=0x7f050030;
         public static final int appTitleText=0x7f05002a;

@@ -57,6 +57,7 @@
     <Compile Include="DataTypes\CounterListItem.cs" />
     <Compile Include="ViewUpdates\UpdateProcesses.cs" />
     <Compile Include="DataTypes\ProcessInformation.cs" />
+    <Compile Include="DPIScaling.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

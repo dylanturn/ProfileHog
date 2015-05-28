@@ -813,14 +813,14 @@ namespace ProfileHG
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f05004d
-			public const int CpuHeader = 2131034189;
+			// aapt resource value: 0x7f05004c
+			public const int CpuHeader = 2131034188;
 			
 			// aapt resource value: 0x7f050000
 			public const int DetailsLayout = 2131034112;
 			
-			// aapt resource value: 0x7f05004f
-			public const int DiskHeader = 2131034191;
+			// aapt resource value: 0x7f05004e
+			public const int DiskHeader = 2131034190;
 			
 			// aapt resource value: 0x7f050025
 			public const int GraphLayout = 2131034149;
@@ -834,8 +834,8 @@ namespace ProfileHG
 			// aapt resource value: 0x7f05004b
 			public const int NameHeader = 2131034187;
 			
-			// aapt resource value: 0x7f050050
-			public const int NetworkHeader = 2131034192;
+			// aapt resource value: 0x7f05004f
+			public const int NetworkHeader = 2131034191;
 			
 			// aapt resource value: 0x7f050049
 			public const int ProcessListLayout = 2131034185;
@@ -849,11 +849,8 @@ namespace ProfileHG
 			// aapt resource value: 0x7f050036
 			public const int ProcessesView = 2131034166;
 			
-			// aapt resource value: 0x7f05004e
-			public const int RamHeader = 2131034190;
-			
-			// aapt resource value: 0x7f05004c
-			public const int StatusHeader = 2131034188;
+			// aapt resource value: 0x7f05004d
+			public const int RamHeader = 2131034189;
 			
 			// aapt resource value: 0x7f050028
 			public const int TitleBarLayout = 2131034152;

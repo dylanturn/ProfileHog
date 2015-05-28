@@ -5,3 +5,10 @@ c:\users\dylan\documents\visual studio 2015\Projects\ProfileHog-Console\ProfileH
 c:\users\dylan\documents\visual studio 2015\Projects\ProfileHog-Console\ProfileHog-Console\obj\Debug\ProfileHog-Console.exe
 c:\users\dylan\documents\visual studio 2015\Projects\ProfileHog-Console\ProfileHog-Console\obj\Debug\ProfileHog-Console.pdb
 C:\Users\Dylan\Documents\Visual Studio 2015\Projects\ProfileHog-Console\ProfileHog-Console\bin\Debug\OpenHardwareMonitorLib.dll
+C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Console\ProfileHog-Console\bin\Debug\ProfileHog-Console.exe.config
+C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Console\ProfileHog-Console\obj\Debug\ProfileHog-Console.exe
+C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Console\ProfileHog-Console\obj\Debug\ProfileHog-Console.pdb
+C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Console\ProfileHog-Console\bin\Debug\ProfileHog-Console.exe
+C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Console\ProfileHog-Console\bin\Debug\ProfileHog-Console.pdb
+C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Console\ProfileHog-Console\bin\Debug\OpenHardwareMonitorLib.dll
+C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Console\ProfileHog-Console\obj\Debug\ProfileHog-Console.csprojResolveAssemblyReference.cache
