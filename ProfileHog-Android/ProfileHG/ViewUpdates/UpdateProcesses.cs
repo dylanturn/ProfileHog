@@ -25,12 +25,69 @@ namespace ProfileHG
 
 		LinearLayout ProcessesList;
 		TableRow HeaderRow;
+		List<ProcessListItem> AllProcesses;
 
 		Activity ParentActivity;
 		View ParentView;
 		Context ParentContext;
 		DataCollection ParentCollection;
 
+		struct ProcessListItem{
+			public static TextView processName;
+			public TextView processCPU;
+			public TextView processRAM;
+			public TextView processDisk;
+			public TextView processNetwork;
+
+			public ProcessListItem(string ProcessName){
+
+				TextView processName = new TextView (ParentContext);
+				TableRow.LayoutParams textParams = new TableRow.LayoutParams ();
+
+				if (ProcessName.Length > 20) {
+					processName.Text = ProcessName.Substring (0, 17) + "...";
+					processName.LayoutParameters = textParams;
+					processName.SetTextSize (ComplexUnitType.Dip, 12);
+				} else {
+					processName.Text = ProcessName;
+					processName.LayoutParameters = textParams;
+					processName.SetTextSize (ComplexUnitType.Dip, 12);
+				}
+
+				TextView processCPU = new TextView (ParentContext);
+				processCPU.SetTextSize (ComplexUnitType.Dip, 12);
+				processCPU.Gravity = GravityFlags.Center;
+
+				TextView processRAM = new TextView (ParentContext);
+				processRAM.SetTextSize (ComplexUnitType.Dip, 12);
+				processRAM.Gravity = GravityFlags.Center;
+
+				TextView processDisk = new TextView (ParentContext);
+				processDisk.SetTextSize (ComplexUnitType.Dip, 12);
+				processDisk.Gravity = GravityFlags.Center;
+
+				TextView processNetwork = new TextView (ParentContext);
+				processNetwork.SetTextSize (ComplexUnitType.Dip, 12);
+				processNetwork.Gravity = GravityFlags.Center;
+
+			}
+
+			public void UpdateProcesses (Activity ParentActivity, string CPUValue, string RAMValue, string DISKValue, string NETValue){
+				ParentActivity.RunOnUiThread (() => processCPU.Text = CPUValue);
+				ParentActivity.RunOnUiThread (() => processRAM.Text = RAMValue);
+				ParentActivity.RunOnUiThread (() => processDisk.Text = DISKValue);
+				ParentActivity.RunOnUiThread (() => processNetwork.Text = NETValue);
+			}
+			public void AddProcesses (Activity ParentActivity, string CPUValue, string RAMValue, string DISKValue, string NETValue){
+				ParentActivity.RunOnUiThread (() => processCPU.Text = CPUValue);
+				ParentActivity.RunOnUiThread (() => processRAM.Text = RAMValue);
+				ParentActivity.RunOnUiThread (() => processDisk.Text = DISKValue);
+				ParentActivity.RunOnUiThread (() => processNetwork.Text = NETValue);
+			}
+			public void RemoveProcess(string ProcessName){
+				
+			}
+		}
 
 		public UpdateProcesses (DataCollection collection, View parentView, Activity parentActivity, Context parentContext)
 		{
@@ -43,75 +100,61 @@ namespace ProfileHG
 			HeaderRow = ProcessesList.FindViewById<TableRow> (Resource.Id.HeaderRow);
 		}
 
+		public void UpdateProcessInfo(){
+			foreach (ProcessInformation thisProcess in ParentCollection.processInformation.ToArray()) {
+				ProcessListItem value = AllProcesses.Find (newItem => newItem.processName.Text == thisProcess.Name);
+				if (value.processName.Text != "") {
+					value.UpdateProcesses (ParentActivity, thisProcess.CpuUsed.ToString(), thisProcess.RamUsed.ToString(), thisProcess.DiskUsed.ToString(), thisProcess.NetworkUsed.ToString());
+				} else {
+					ProcessListItem newProcessItem = new ProcessListItem (thisProcess.Name);
+					newProcessItem.UpdateProcesses (ParentActivity, thisProcess.CpuUsed.ToString(), thisProcess.RamUsed.ToString(), thisProcess.DiskUsed.ToString(), thisProcess.NetworkUsed.ToString());
+				}
+			}
+		}
+
 		public void StartUIUpdate(){
 			while (true) {
 				try{
-				Console.WriteLine ("Listing processes");
-
-				ParentActivity.RunOnUiThread (() => ProcessesList.RemoveAllViews ());
-				ParentActivity.RunOnUiThread (() => ProcessesList.AddView (HeaderRow));
-				
-				Console.WriteLine ("Header Row Cleared");
-				
-				foreach (ProcessInformation thisProcess in ParentCollection.processInformation.ToArray()) {
-						Console.WriteLine ("Adding new Row");
-						TableRow processRow = new TableRow(ParentContext);
-					TableRow.LayoutParams parms = new TableRow.LayoutParams (TableRow.LayoutParams.MatchParent, 50); //Width, Height
-
-					processRow.LayoutParameters = parms;
-
-					processRow.SetGravity(GravityFlags.Center);
-					TextView processName = new TextView (ParentContext);
-					TableRow.LayoutParams textParams = new TableRow.LayoutParams ();
-					
-					
-						DPIScaling dpiScaling = new DPIScaling(ParentContext);
-						textParams.LeftMargin = dpiScaling.GetDPI (5);
-
-					if (thisProcess.Name.Length > 20) {
-						processName.Text = thisProcess.Name.Substring (0, 17) + "...";
-						processName.LayoutParameters = textParams;
-						processName.SetTextSize (ComplexUnitType.Dip, 12);
-					} else {
-						processName.Text = thisProcess.Name;
-						processName.LayoutParameters = textParams;
-						processName.SetTextSize (ComplexUnitType.Dip, 12);
-					}
-
-					TextView processCPU = new TextView (ParentContext);
-					processCPU.SetTextSize (ComplexUnitType.Dip, 12);
-					processCPU.Text = thisProcess.CpuUsed.ToString();
-					processCPU.Gravity = GravityFlags.Center;
-
-					TextView processRAM = new TextView (ParentContext);
-					processRAM.SetTextSize (ComplexUnitType.Dip, 12);
-					processRAM.Text = thisProcess.RamUsed.ToString();
-					processRAM.Gravity = GravityFlags.Center;
-										
-					TextView processDisk = new TextView (ParentContext);
-					processDisk.SetTextSize (ComplexUnitType.Dip, 12);
-					processDisk.Text = thisProcess.DiskUsed.ToString();
-					processDisk.Gravity = GravityFlags.Center;
-
-					TextView processNetwork = new TextView (ParentContext);
-					processNetwork.SetTextSize (ComplexUnitType.Dip, 12);
-					processNetwork.Text = thisProcess.NetworkUsed.ToString();
-					processNetwork.Gravity = GravityFlags.Center;
-					
-						Console.WriteLine ("Adding textview to the row");
-					processRow.AddView (processName);
-					processRow.AddView (processCPU);
-					processRow.AddView (processRAM);
-					processRow.AddView (processDisk);
-					processRow.AddView (processNetwork);
-						Console.WriteLine ("Adding the row to the list view");
-					ParentActivity.RunOnUiThread (() => ProcessesList.AddView (processRow));
-
+					foreach (ProcessInformation thisProcess in ParentCollection.processInformation.ToArray()) {
+						ProcessListItem value = AllProcesses.Find(newItem => newItem.processName.Text == thisProcess.Name);
+						if(value.processName.Text != ""){
+							ParentActivity.RunOnUiThread (() => value.UpdateProcesses(ParentActivity, thisProcess.CpuUsed.ToString(),thisProcess.RamUsed.ToString(), thisProcess.DiskUsed.ToString(), thisProcess.NetworkUsed.ToString()));
+						}
 				}
-				Thread.Sleep (500);
 				}catch(Exception error){
 					Console.WriteLine ("PROCESS LIST ERROR: " + error.Message);
 				}
+				Thread.Sleep (500);
+			}
+		}
+
+		public void CreateTable(){
+			try{
+				
+				foreach (ProcessListItem thisProcess in AllProcesses) {
+					
+					Console.WriteLine ("Adding new Row");
+					TableRow processRow = new TableRow(ParentContext);
+					TableRow.LayoutParams parms = new TableRow.LayoutParams (TableRow.LayoutParams.MatchParent, 50); //Width, Height
+					processRow.LayoutParameters = parms;
+					processRow.SetGravity(GravityFlags.Center);
+
+					Console.WriteLine ("Adding textview to the row");
+					processRow.AddView (thisProcess.processName);
+					processRow.AddView (thisProcess.processCPU);
+					processRow.AddView (thisProcess.processRAM);
+					processRow.AddView (thisProcess.processDisk);
+					processRow.AddView (thisProcess.processNetwork);
+
+					Console.WriteLine ("Adding the row to the list view");
+					ParentActivity.RunOnUiThread (() => ProcessesList.AddView (processRow));
+
+				}
+
+			}catch(Exception error){
+				
+				Console.WriteLine ("PROCESS LIST ERROR: " + error.Message);
+
 			}
 		}
 	}

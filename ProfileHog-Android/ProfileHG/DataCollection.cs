@@ -152,7 +152,7 @@ namespace ProfileHG
 					//Thread.Sleep(200);
 					if (ServerConnection.Available == 0) {
 						waitingOnData = false;
-						Console.WriteLine ("No more data. DataSize: " + cleanRecieve.Length);
+						//Console.WriteLine ("No more data. DataSize: " + cleanRecieve.Length);
 					}
 				}
 
@@ -236,9 +236,9 @@ namespace ProfileHG
 					Thread.Sleep (500);
 				}
 				catch(Exception error){
-					Console.WriteLine ("Byte Length: " + cleanRecieve.Length);
-					Console.WriteLine (data);
-					Console.WriteLine ("ERROR: " + error.Message);
+					//Console.WriteLine ("Byte Length: " + cleanRecieve.Length);
+					//Console.WriteLine (data);
+					//Console.WriteLine ("ERROR: " + error.Message);
 				}
 			}
 

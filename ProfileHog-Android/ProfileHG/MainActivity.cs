@@ -24,10 +24,12 @@ namespace ProfileHG
 	[Activity (Theme = "@android:style/Theme.DeviceDefault.NoActionBar",Label = "Profile Hog", MainLauncher = true, Icon = "@drawable/icon", ConfigurationChanges=Android.Content.PM.ConfigChanges.Orientation | Android.Content.PM.ConfigChanges.ScreenSize)]
 	public class MainActivity : Activity
 	{
-		DataCollection dataCollection = new DataCollection ();
+		public DataCollection dataCollection = new DataCollection ();
 		Task uiUpdateTask;
 		LinearLayout activeButtonLayout;
 		DPIScaling dpiScaling;
+		Fragment ActiveFragment;
+
 
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -37,12 +39,10 @@ namespace ProfileHG
 
 			dataCollection.OnStartCommand (this.Intent, StartCommandFlags.Retry, 0);
 			activeButtonLayout = FindViewById<LinearLayout> (Resource.Id.activeButtonLayout);
-
 			dpiScaling = new DPIScaling (this);
 
-			ShowGraph ();
-
-
+			GraphFragment graphFragment = new GraphFragment ();
+			FragmentManager.BeginTransaction ().Replace (Resource.Id.frameLayout1, graphFragment).Commit ();
 
 			Task quickViewUpdateTask = new Task( () => new UpdateQuickView (dataCollection, this).StartUIUpdate (),TaskCreationOptions.LongRunning);
 			quickViewUpdateTask.Start();
@@ -64,10 +64,7 @@ namespace ProfileHG
 			};
 
 		}
-
-
-
-
+		
 		private void ShowGraph(){
 			LinearLayout summaryButtonLayout = FindViewById<LinearLayout> (Resource.Id.summaryLayout);
 			LinearLayout departingView = (LinearLayout)activeButtonLayout.Parent;
@@ -82,10 +79,9 @@ namespace ProfileHG
 
 			summaryParams.Height = height;
 			summaryButtonLayout.AddView(activeButtonLayout,1);
-
-			FrameLayout frameLayout = FindViewById<FrameLayout> (Resource.Id.frameLayout1);
-			frameLayout.RemoveAllViews ();
-			LayoutInflater.Inflate(Resource.Layout.GraphLayout, frameLayout,true);
+			
+			GraphFragment graphFragment = new GraphFragment ();
+			FragmentManager.BeginTransaction ().Replace (Resource.Id.frameLayout1, graphFragment).Commit ();
 		}
 		private void ShowDetails(){
 			LinearLayout detailsButtonLayout = FindViewById<LinearLayout> (Resource.Id.detailsLayout);
@@ -102,15 +98,8 @@ namespace ProfileHG
 			detailParams.Height = height;
 			detailsButtonLayout.AddView(activeButtonLayout,1);
 
-			FrameLayout frameLayout = FindViewById<FrameLayout> (Resource.Id.frameLayout1);
-			frameLayout.RemoveAllViews ();
-			LayoutInflater.Inflate(Resource.Layout.DetailsLayout, frameLayout,true);
-
-			LinearLayout rootLayout = FindViewById<LinearLayout> (Resource.Id.linearLayout1);
-			UpdateDetails updateDetails = new UpdateDetails (dataCollection, rootLayout, this);
-
-			uiUpdateTask = new Task( () => updateDetails.StartUIUpdate(),TaskCreationOptions.LongRunning);
-			uiUpdateTask.Start();
+			DetailsFragment detailsFragment = new DetailsFragment ();
+			FragmentManager.BeginTransaction ().Replace (Resource.Id.frameLayout1, detailsFragment).Commit ();
 		}
 		private void ShowProcesses(){
 			LinearLayout processesButtonLayout = FindViewById<LinearLayout> (Resource.Id.ProcessesLayout);
@@ -127,14 +116,11 @@ namespace ProfileHG
 			processesParams.Height = height;
 			processesButtonLayout.AddView(activeButtonLayout,1);
 
-			FrameLayout frameLayout = FindViewById<FrameLayout> (Resource.Id.frameLayout1);
-			frameLayout.RemoveAllViews ();
-			LayoutInflater.Inflate(Resource.Layout.ProcessesLayout, frameLayout,true);
+			ProcessFragment processFragment = new ProcessFragment ();
+			FragmentManager.BeginTransaction ().Replace (Resource.Id.frameLayout1, processFragment).Commit ();
 
-			UpdateProcesses updateProcesses = new UpdateProcesses (dataCollection, frameLayout, this, this);
-			uiUpdateTask = new Task( () => updateProcesses.StartUIUpdate(),TaskCreationOptions.LongRunning);
-			uiUpdateTask.Start();
-			//CreateListView (dataCollection.processInformation);
+			Task ProcessListTask = new Task( () => processFragment.UpdateProcessList(dataCollection),TaskCreationOptions.LongRunning);
+			ProcessListTask.Start();
 		}
 
 		private void CreateListView(List<ProcessInformation> newProcesses){

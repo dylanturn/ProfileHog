@@ -222,12 +222,22 @@ namespace ProfileHog_Console
             foreach (ManagementObject wmiProcesses in processesSearcher.Get())
             {
                 int index = processInformation.FindIndex(pInfo => pInfo.Id == (UInt32)wmiProcesses["ProcessId"]);
+
                 if (index >= 0)
                 {
                     processInformation[index].Id = (UInt32)wmiProcesses["ProcessId"];
                     processInformation[index].Name = (string)wmiProcesses["Caption"];
                     processInformation[index].Responding = true;
-                    processInformation[index].CpuUsed = 0;
+
+                    SelectQuery processQuery = new SelectQuery("Win32_PerfFormattedData_PerfProc_Process", "IDProcess = " + processInformation[index].Id);
+                    ManagementObjectSearcher searcher = new ManagementObjectSearcher(processQuery);
+
+                    foreach (ManagementObject queryObj in searcher.Get())
+                    {
+                        Console.WriteLine("PercentProcessorTime: {0}", queryObj["PercentProcessorTime"]);
+                        processInformation[index].CpuUsed = Convert.ToInt32(queryObj["PercentProcessorTime"]);
+                    }
+
                     processInformation[index].RamUsed = 0;
                     processInformation[index].DiskUsed = 0;
                     processInformation[index].NetworkUsed = 0;

@@ -1,9 +1,16 @@
 ﻿<Properties StartupItem="ProfileHG\Profile Hog.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.192.168.1.21:5555" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ProfileHG\DataCollection.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus 5 (Lollipop)" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ProfileHG\ProcessFragment.cs">
     <Files>
-      <File FileName="ProfileHG\MainActivity.cs" Line="20" Column="1" />
-      <File FileName="ProfileHG\DataCollection.cs" Line="152" Column="8" />
+      <File FileName="ProfileHG\MainActivity.cs" Line="128" Column="21" />
+      <File FileName="ProfileHG\ViewUpdates\UpdateProcesses.cs" Line="105" Column="5" />
+      <File FileName="ProfileHG\GraphFragment.cs" Line="30" Column="55" />
+      <File FileName="ProfileHG\DetailsFragment.cs" Line="30" Column="57" />
+      <File FileName="ProfileHG\ProcessFragment.cs" Line="117" Column="47" />
+      <File FileName="c:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG\DataTypes\CounterList.cs" Line="25" Column="1" />
+      <File FileName="c:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG\DataTypes\CounterListItem.cs" Line="25" Column="1" />
+      <File FileName="ProfileHG\ViewUpdates\UpdateDetails.cs" Line="49" Column="50" />
+      <File FileName="ProfileHG\DataCollection.cs" Line="241" Column="8" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
