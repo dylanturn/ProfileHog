@@ -104,7 +104,9 @@ namespace ProfileHG
 								TemperatureListItem foundListItem = FindItemByParent (thisHardware.HardwareName);
 								if (foundListItem != null) {
 										
-									this.Activity.RunOnUiThread (() => foundListItem.Update(thisSensor));
+									if(this.Activity != null){
+										this.Activity.RunOnUiThread (() => foundListItem.Update(thisSensor));
+									}
 
 								} else {
 									
@@ -116,8 +118,10 @@ namespace ProfileHG
 
 									TemperatureItems.Add (newItem);
 									ItemTableLayout.AddView (ItemRow);
-
-									this.Activity.RunOnUiThread (() => TempDetailsParent.AddView (ItemLayout));
+									
+									if(this.Activity != null){
+										this.Activity.RunOnUiThread (() => TempDetailsParent.AddView (ItemLayout));
+									}
 								}
 							}
 						}
@@ -130,6 +134,10 @@ namespace ProfileHG
 				} catch (Exception e){ Console.WriteLine (e.Message); }
 			}
 		
+		}
+		public override void OnDestroy ()
+		{
+			base.OnDestroy ();
 		}
 	}
 }

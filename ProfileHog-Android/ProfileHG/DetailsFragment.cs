@@ -94,28 +94,28 @@ namespace ProfileHG
 
 		public void StartUIUpdate(){
 			while (true) {
+				if (this.Activity != null) {
+					this.Activity.RunOnUiThread (() => cpuCurrentView.Text = dataCollection.cpuCounter.getCurrentValue ().ToString ());
+					this.Activity.RunOnUiThread (() => ramCurrentView.Text = dataCollection.ramCounter.getCurrentValue ().ToString ());
+					this.Activity.RunOnUiThread (() => diskReadCurrentView.Text = dataCollection.diskReadCounter.getCurrentValue ().ToString ());
+					this.Activity.RunOnUiThread (() => diskWriteCurrentView.Text = dataCollection.diskWriteCounter.getCurrentValue ().ToString ());
+					this.Activity.RunOnUiThread (() => gpuCoreCurrentView.Text = dataCollection.gpuCoreCounter.getCurrentValue ().ToString ());
+					this.Activity.RunOnUiThread (() => gpuMEMCurrentView.Text = dataCollection.gpuMEMCounter.getCurrentValue ().ToString ());
 
-				this.Activity.RunOnUiThread (() => cpuCurrentView.Text = dataCollection.cpuCounter.getCurrentValue ().ToString ());
-				this.Activity.RunOnUiThread (() => ramCurrentView.Text = dataCollection.ramCounter.getCurrentValue ().ToString ());
-				this.Activity.RunOnUiThread (() => diskReadCurrentView.Text = dataCollection.diskReadCounter.getCurrentValue ().ToString ());
-				this.Activity.RunOnUiThread (() => diskWriteCurrentView.Text = dataCollection.diskWriteCounter.getCurrentValue ().ToString ());
-				this.Activity.RunOnUiThread (() => gpuCoreCurrentView.Text = dataCollection.gpuCoreCounter.getCurrentValue ().ToString ());
-				this.Activity.RunOnUiThread (() => gpuMEMCurrentView.Text = dataCollection.gpuMEMCounter.getCurrentValue ().ToString ());
+					this.Activity.RunOnUiThread (() => cpuHighestView.Text = dataCollection.cpuCounter.getHighestValue ().ToString ());
+					this.Activity.RunOnUiThread (() => ramHighestView.Text = dataCollection.ramCounter.getHighestValue ().ToString ());
+					this.Activity.RunOnUiThread (() => diskReadHighestView.Text = dataCollection.diskReadCounter.getHighestValue ().ToString ());
+					this.Activity.RunOnUiThread (() => diskWriteHighestView.Text = dataCollection.diskWriteCounter.getHighestValue ().ToString ());
+					this.Activity.RunOnUiThread (() => gpuCoreHighestView.Text = dataCollection.gpuCoreCounter.getHighestValue ().ToString ());
+					this.Activity.RunOnUiThread (() => gpuMEMHighestView.Text = dataCollection.gpuMEMCounter.getHighestValue ().ToString ());
 
-				this.Activity.RunOnUiThread (() => cpuHighestView.Text = dataCollection.cpuCounter.getHighestValue ().ToString ());
-				this.Activity.RunOnUiThread (() => ramHighestView.Text = dataCollection.ramCounter.getHighestValue ().ToString ());
-				this.Activity.RunOnUiThread (() => diskReadHighestView.Text = dataCollection.diskReadCounter.getHighestValue ().ToString ());
-				this.Activity.RunOnUiThread (() => diskWriteHighestView.Text = dataCollection.diskWriteCounter.getHighestValue ().ToString ());
-				this.Activity.RunOnUiThread (() => gpuCoreHighestView.Text = dataCollection.gpuCoreCounter.getHighestValue ().ToString ());
-				this.Activity.RunOnUiThread (() => gpuMEMHighestView.Text = dataCollection.gpuMEMCounter.getHighestValue ().ToString ());
-
-				this.Activity.RunOnUiThread (() => cpuAverageView.Text = dataCollection.cpuCounter.getAverageValue ().ToString ());
-				this.Activity.RunOnUiThread (() => ramAverageView.Text = dataCollection.ramCounter.getAverageValue ().ToString ());
-				this.Activity.RunOnUiThread (() => diskReadAverageView.Text = dataCollection.diskReadCounter.getAverageValue ().ToString ());
-				this.Activity.RunOnUiThread (() => diskWriteAverageView.Text = dataCollection.diskWriteCounter.getAverageValue ().ToString ());
-				this.Activity.RunOnUiThread (() => gpuCoreAverageView.Text = dataCollection.gpuCoreCounter.getAverageValue ().ToString ());
-				this.Activity.RunOnUiThread (() => gpuMEMAverageView.Text = dataCollection.gpuMEMCounter.getAverageValue ().ToString ());
-
+					this.Activity.RunOnUiThread (() => cpuAverageView.Text = dataCollection.cpuCounter.getAverageValue ().ToString ());
+					this.Activity.RunOnUiThread (() => ramAverageView.Text = dataCollection.ramCounter.getAverageValue ().ToString ());
+					this.Activity.RunOnUiThread (() => diskReadAverageView.Text = dataCollection.diskReadCounter.getAverageValue ().ToString ());
+					this.Activity.RunOnUiThread (() => diskWriteAverageView.Text = dataCollection.diskWriteCounter.getAverageValue ().ToString ());
+					this.Activity.RunOnUiThread (() => gpuCoreAverageView.Text = dataCollection.gpuCoreCounter.getAverageValue ().ToString ());
+					this.Activity.RunOnUiThread (() => gpuMEMAverageView.Text = dataCollection.gpuMEMCounter.getAverageValue ().ToString ());
+				}
 				Thread.Sleep (500);
 			}
 		}

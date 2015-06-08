@@ -7,6 +7,9 @@ namespace ProfileHG
 		int value;
 		DateTime dateStamp;
 
+		public SensorValue(){
+		}
+
 		public SensorValue(int newValue){
 			value = newValue;
 			dateStamp = DateTime.Now;

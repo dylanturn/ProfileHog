@@ -37,16 +37,31 @@ namespace ProfileHG
 		}
 
 		public Sensor(){
+			HighestValue = new SensorValue ();
+			AverageValue = new SensorValue ();
 		}
 
 		public Sensor (string Name, Types Type){
 			SensorName = Name;
 			SensorType = Type;
+			HighestValue = new SensorValue ();
+			AverageValue = new SensorValue ();
 		}
 
 		public Sensor (string Name, Types Type, int value){
 			SensorName = Name;
 			SensorType = Type;
+			HighestValue = new SensorValue ();
+			AverageValue = new SensorValue ();
+			this.setCurrentValue (value);
+		}
+
+		public Sensor (string Name, Hardware Parent, Types Type, int value){
+			SensorName = Name;
+			SensorParent = Parent;
+			SensorType = Type;
+			HighestValue = new SensorValue ();
+			AverageValue = new SensorValue ();
 			this.setCurrentValue (value);
 		}
 
@@ -54,8 +69,8 @@ namespace ProfileHG
 			SensorValue newItem = new SensorValue (value);
 			CurrentValue = newItem;
 			SensorHistory.Add (newItem);
-			//setHighestValue ();
-			//calculateAverageValue ();
+			setHighestValue ();
+			calculateAverageValue ();
 		}
 
 		void setHighestValue(){

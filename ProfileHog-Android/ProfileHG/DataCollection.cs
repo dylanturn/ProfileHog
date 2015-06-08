@@ -194,7 +194,7 @@ namespace ProfileHG
 								if(foundSensor.SensorName != null){
 									foundSensor.setCurrentValue(Convert.ToInt32((float?)sensorObject ["Value"]));
 								} else {
-									Sensor newSensor = new Sensor((string)sensorObject ["Name"], Sensor.SensorTypeFromString((string)sensorObject ["Type"]), Convert.ToInt32((float?)sensorObject ["Value"]));
+									Sensor newSensor = new Sensor((string)sensorObject ["Name"], foundHardware, Sensor.SensorTypeFromString((string)sensorObject ["Type"]), Convert.ToInt32((float?)sensorObject ["Value"]));
 									foundHardware.SensorList.Add(newSensor);
 								}
 							}
@@ -204,7 +204,7 @@ namespace ProfileHG
 							Hardware newHardware = new Hardware((string)hardwareObject["Name"],  Hardware.HardwareTypeFromString((string)hardwareObject["Type"]), null);
 
 							foreach (JsonObject sensorObject in hardwareObject["Sensors"]) {
-								Sensor newSensor = new Sensor((string)sensorObject ["Name"], Sensor.SensorTypeFromString((string)sensorObject ["Type"]), Convert.ToInt32((float?)sensorObject ["Value"]));
+								Sensor newSensor = new Sensor((string)sensorObject ["Name"], newHardware, Sensor.SensorTypeFromString((string)sensorObject ["Type"]), Convert.ToInt32((float?)sensorObject ["Value"]));
 								newHardware.SensorList.Add(newSensor);
 							}
 							HardwareList.Add(newHardware);
