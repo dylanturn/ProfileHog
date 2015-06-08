@@ -18,3 +18,7 @@ ProfileHG.DetailsFragment, ProfileHG;md56bb0d634f8e536edeba3342d13f3ff08.Details
 ProfileHG.DetailsFragment, ProfileHG, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md56bb0d634f8e536edeba3342d13f3ff08.DetailsFragment
 ProfileHG.DetailsFragment;md56bb0d634f8e536edeba3342d13f3ff08.DetailsFragment
 profilehg.DetailsFragment;md56bb0d634f8e536edeba3342d13f3ff08.DetailsFragment
+ProfileHG.TemperatureFragment, ProfileHG;md56bb0d634f8e536edeba3342d13f3ff08.TemperatureFragment
+ProfileHG.TemperatureFragment, ProfileHG, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md56bb0d634f8e536edeba3342d13f3ff08.TemperatureFragment
+ProfileHG.TemperatureFragment;md56bb0d634f8e536edeba3342d13f3ff08.TemperatureFragment
+profilehg.TemperatureFragment;md56bb0d634f8e536edeba3342d13f3ff08.TemperatureFragment

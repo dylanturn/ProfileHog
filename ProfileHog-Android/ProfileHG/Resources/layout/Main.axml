@@ -127,7 +127,7 @@
                     android:layout_height="30dp"
                     android:id="@+id/ProcessesText">
                     <Button
-                        android:text="Processes"
+                        android:text="Temps"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/ProcessesView"

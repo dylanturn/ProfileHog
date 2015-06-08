@@ -5,12 +5,25 @@ namespace ProfileHG
 {
 	public class CounterList
 	{
+		string counterName = null;
+		string counterType = null;
 		CounterListItem currentValue = new CounterListItem();
 		CounterListItem highestValue = new CounterListItem();
 		CounterListItem averageValue = new CounterListItem();
 		List<CounterListItem> counterHistory = new List<CounterListItem> ();
 
 		public CounterList (){
+		}
+
+		public CounterList (string Name, string Type){
+			counterName = Name;
+			counterType = Type;
+		}
+
+		public CounterList (string Name, string Type, int value){
+			counterName = Name;
+			counterType = Type;
+			this.setCurrentValue (value);
 		}
 
 		public void setCurrentValue( int value){
@@ -20,7 +33,12 @@ namespace ProfileHG
 			setHighestValue ();
 			calculateAverageValue ();
 		}
-
+		public string getName(){
+			return counterName;
+		}
+		public string getType(){
+			return counterType;
+		}
 		public int getCurrentValue(){
 			return currentValue.getValue();
 		}

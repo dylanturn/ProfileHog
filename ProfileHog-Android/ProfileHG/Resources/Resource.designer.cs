@@ -813,32 +813,32 @@ namespace ProfileHG
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f05004c
-			public const int CpuHeader = 2131034188;
+			// aapt resource value: 0x7f05004d
+			public const int CpuHeader = 2131034189;
 			
 			// aapt resource value: 0x7f050000
 			public const int DetailsLayout = 2131034112;
 			
-			// aapt resource value: 0x7f05004e
-			public const int DiskHeader = 2131034190;
+			// aapt resource value: 0x7f05004f
+			public const int DiskHeader = 2131034191;
 			
 			// aapt resource value: 0x7f050025
 			public const int GraphLayout = 2131034149;
 			
-			// aapt resource value: 0x7f05004a
-			public const int HeaderRow = 2131034186;
+			// aapt resource value: 0x7f05004b
+			public const int HeaderRow = 2131034187;
 			
 			// aapt resource value: 0x7f05002b
 			public const int MenuBarLayout = 2131034155;
 			
-			// aapt resource value: 0x7f05004b
-			public const int NameHeader = 2131034187;
+			// aapt resource value: 0x7f05004c
+			public const int NameHeader = 2131034188;
 			
-			// aapt resource value: 0x7f05004f
-			public const int NetworkHeader = 2131034191;
+			// aapt resource value: 0x7f050050
+			public const int NetworkHeader = 2131034192;
 			
-			// aapt resource value: 0x7f050049
-			public const int ProcessListLayout = 2131034185;
+			// aapt resource value: 0x7f05004a
+			public const int ProcessListLayout = 2131034186;
 			
 			// aapt resource value: 0x7f050034
 			public const int ProcessesLayout = 2131034164;
@@ -849,8 +849,20 @@ namespace ProfileHG
 			// aapt resource value: 0x7f050036
 			public const int ProcessesView = 2131034166;
 			
-			// aapt resource value: 0x7f05004d
-			public const int RamHeader = 2131034189;
+			// aapt resource value: 0x7f05004e
+			public const int RamHeader = 2131034190;
+			
+			// aapt resource value: 0x7f050052
+			public const int TemperatureDetails = 2131034194;
+			
+			// aapt resource value: 0x7f050048
+			public const int TemperatureLayout = 2131034184;
+			
+			// aapt resource value: 0x7f050051
+			public const int TemperatureScroll = 2131034193;
+			
+			// aapt resource value: 0x7f050049
+			public const int TemperatureScrollView = 2131034185;
 			
 			// aapt resource value: 0x7f050028
 			public const int TitleBarLayout = 2131034152;
@@ -990,6 +1002,9 @@ namespace ProfileHG
 			// aapt resource value: 0x7f05002c
 			public const int linearLayout11 = 2131034156;
 			
+			// aapt resource value: 0x7f050053
+			public const int linearLayout2 = 2131034195;
+			
 			// aapt resource value: 0x7f05003b
 			public const int linearLayout9 = 2131034171;
 			
@@ -1026,9 +1041,6 @@ namespace ProfileHG
 			// aapt resource value: 0x7f050026
 			public const int relativeLayout1 = 2131034150;
 			
-			// aapt resource value: 0x7f050048
-			public const int scrollView1 = 2131034184;
-			
 			// aapt resource value: 0x7f05002d
 			public const int summaryLayout = 2131034157;
 			
@@ -1037,6 +1049,42 @@ namespace ProfileHG
 			
 			// aapt resource value: 0x7f05002f
 			public const int summaryView = 2131034159;
+			
+			// aapt resource value: 0x7f050055
+			public const int tableLayout1 = 2131034197;
+			
+			// aapt resource value: 0x7f050056
+			public const int tableRow1 = 2131034198;
+			
+			// aapt resource value: 0x7f05005b
+			public const int tableRow2 = 2131034203;
+			
+			// aapt resource value: 0x7f050054
+			public const int textView1 = 2131034196;
+			
+			// aapt resource value: 0x7f050057
+			public const int textView11 = 2131034199;
+			
+			// aapt resource value: 0x7f050058
+			public const int textView12 = 2131034200;
+			
+			// aapt resource value: 0x7f050059
+			public const int textView13 = 2131034201;
+			
+			// aapt resource value: 0x7f05005a
+			public const int textView14 = 2131034202;
+			
+			// aapt resource value: 0x7f05005c
+			public const int textView15 = 2131034204;
+			
+			// aapt resource value: 0x7f05005f
+			public const int textView16 = 2131034207;
+			
+			// aapt resource value: 0x7f05005d
+			public const int textView17 = 2131034205;
+			
+			// aapt resource value: 0x7f05005e
+			public const int textView18 = 2131034206;
 			
 			// aapt resource value: 0x7f050003
 			public const int textView39 = 2131034115;
@@ -1077,6 +1125,12 @@ namespace ProfileHG
 			
 			// aapt resource value: 0x7f030003
 			public const int ProcessesLayout = 2130903043;
+			
+			// aapt resource value: 0x7f030004
+			public const int TemperatureLayout = 2130903044;
+			
+			// aapt resource value: 0x7f030005
+			public const int TemperatureTableTemplate = 2130903045;
 			
 			static Layout()
 			{

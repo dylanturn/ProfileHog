@@ -2038,5 +2038,7 @@ C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG\obj\Debu
 C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG\obj\Debug\res\drawable-hdpi\ic_action_wizard.png
 C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG\obj\Debug\res\drawable-hdpi\ic_action_yinyang.png
 C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG\obj\Debug\res\drawable-hdpi\ic_action_youtube.png
+C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG\obj\Debug\res\layout\temperaturetabletemplate.xml
+C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG\obj\Debug\res\layout\temperaturelayout.xml
 C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG\obj\Debug\R.cs.flag
 C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG\obj\Debug\uploadflags.txt

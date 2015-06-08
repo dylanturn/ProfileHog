@@ -265,19 +265,23 @@ public final class R {
         public static final int profilehogbackground=0x7f0200fb;
     }
     public static final class id {
-        public static final int CpuHeader=0x7f05004c;
+        public static final int CpuHeader=0x7f05004d;
         public static final int DetailsLayout=0x7f050000;
-        public static final int DiskHeader=0x7f05004e;
+        public static final int DiskHeader=0x7f05004f;
         public static final int GraphLayout=0x7f050025;
-        public static final int HeaderRow=0x7f05004a;
+        public static final int HeaderRow=0x7f05004b;
         public static final int MenuBarLayout=0x7f05002b;
-        public static final int NameHeader=0x7f05004b;
-        public static final int NetworkHeader=0x7f05004f;
-        public static final int ProcessListLayout=0x7f050049;
+        public static final int NameHeader=0x7f05004c;
+        public static final int NetworkHeader=0x7f050050;
+        public static final int ProcessListLayout=0x7f05004a;
         public static final int ProcessesLayout=0x7f050034;
         public static final int ProcessesText=0x7f050035;
         public static final int ProcessesView=0x7f050036;
-        public static final int RamHeader=0x7f05004d;
+        public static final int RamHeader=0x7f05004e;
+        public static final int TemperatureDetails=0x7f050052;
+        public static final int TemperatureLayout=0x7f050048;
+        public static final int TemperatureScroll=0x7f050051;
+        public static final int TemperatureScrollView=0x7f050049;
         public static final int TitleBarLayout=0x7f050028;
         public static final int activeButtonLayout=0x7f050030;
         public static final int appTitleText=0x7f05002a;
@@ -324,6 +328,7 @@ public final class R {
         public static final int linearLayout1=0x7f050027;
         public static final int linearLayout10=0x7f050038;
         public static final int linearLayout11=0x7f05002c;
+        public static final int linearLayout2=0x7f050053;
         public static final int linearLayout9=0x7f05003b;
         public static final int performanceCounterTable=0x7f050001;
         public static final int quickViewLayout=0x7f050039;
@@ -336,10 +341,21 @@ public final class R {
         public static final int ramTableRow=0x7f05000c;
         public static final int ramTitle=0x7f05000d;
         public static final int relativeLayout1=0x7f050026;
-        public static final int scrollView1=0x7f050048;
         public static final int summaryLayout=0x7f05002d;
         public static final int summaryText=0x7f05002e;
         public static final int summaryView=0x7f05002f;
+        public static final int tableLayout1=0x7f050055;
+        public static final int tableRow1=0x7f050056;
+        public static final int tableRow2=0x7f05005b;
+        public static final int textView1=0x7f050054;
+        public static final int textView11=0x7f050057;
+        public static final int textView12=0x7f050058;
+        public static final int textView13=0x7f050059;
+        public static final int textView14=0x7f05005a;
+        public static final int textView15=0x7f05005c;
+        public static final int textView16=0x7f05005f;
+        public static final int textView17=0x7f05005d;
+        public static final int textView18=0x7f05005e;
         public static final int textView39=0x7f050003;
         public static final int textView40=0x7f050004;
         public static final int textView41=0x7f050006;
@@ -351,6 +367,8 @@ public final class R {
         public static final int graphlayout=0x7f030001;
         public static final int main=0x7f030002;
         public static final int processeslayout=0x7f030003;
+        public static final int temperaturelayout=0x7f030004;
+        public static final int temperaturetabletemplate=0x7f030005;
     }
     public static final class string {
         public static final int Header_Processes_CPU=0x7f040003;

@@ -25,11 +25,9 @@ namespace ProfileHG
 	public class MainActivity : Activity
 	{
 		public DataCollection dataCollection = new DataCollection ();
-		Task uiUpdateTask;
+
 		LinearLayout activeButtonLayout;
 		DPIScaling dpiScaling;
-		Fragment ActiveFragment;
-
 
 		protected override void OnCreate (Bundle bundle)
 		{
@@ -83,6 +81,7 @@ namespace ProfileHG
 			GraphFragment graphFragment = new GraphFragment ();
 			FragmentManager.BeginTransaction ().Replace (Resource.Id.frameLayout1, graphFragment).Commit ();
 		}
+
 		private void ShowDetails(){
 			LinearLayout detailsButtonLayout = FindViewById<LinearLayout> (Resource.Id.detailsLayout);
 			LinearLayout departingView = (LinearLayout)activeButtonLayout.Parent;
@@ -98,9 +97,10 @@ namespace ProfileHG
 			detailParams.Height = height;
 			detailsButtonLayout.AddView(activeButtonLayout,1);
 
-			DetailsFragment detailsFragment = new DetailsFragment ();
+			DetailsFragment detailsFragment = new DetailsFragment (dataCollection);
 			FragmentManager.BeginTransaction ().Replace (Resource.Id.frameLayout1, detailsFragment).Commit ();
 		}
+
 		private void ShowProcesses(){
 			LinearLayout processesButtonLayout = FindViewById<LinearLayout> (Resource.Id.ProcessesLayout);
 			LinearLayout departingView = (LinearLayout)activeButtonLayout.Parent;
@@ -117,69 +117,8 @@ namespace ProfileHG
 			processesButtonLayout.AddView(activeButtonLayout,1);
 
 			ProcessFragment processFragment = new ProcessFragment ();
-			FragmentManager.BeginTransaction ().Replace (Resource.Id.frameLayout1, processFragment).Commit ();
-
-			Task ProcessListTask = new Task( () => processFragment.UpdateProcessList(dataCollection),TaskCreationOptions.LongRunning);
-			ProcessListTask.Start();
-		}
-
-		private void CreateListView(List<ProcessInformation> newProcesses){
-			Console.WriteLine ("Listing processes");
-			LinearLayout ProcessesList = FindViewById<LinearLayout> (Resource.Id.ProcessListLayout);
-			TableRow HeaderRow = ProcessesList.FindViewById<TableRow> (Resource.Id.HeaderRow);
-			ProcessesList.RemoveAllViews ();
-			ProcessesList.AddView (HeaderRow);
-			foreach (ProcessInformation thisProcess in newProcesses.ToArray()) {
-				TableRow processRow = new TableRow(this);
-				TableRow.LayoutParams parms = new TableRow.LayoutParams (TableRow.LayoutParams.MatchParent, 50); //Width, Height
-
-				processRow.LayoutParameters = parms;
-
-				processRow.SetGravity(GravityFlags.Center);
-				TextView processName = new TextView (this);
-				TableRow.LayoutParams textParams = new TableRow.LayoutParams ();
-				DisplayMetrics metrics = new DisplayMetrics();         
-				WindowManager.DefaultDisplay.GetMetrics(metrics);
-				textParams.LeftMargin = dpiScaling.GetDPI (5);
-
-				if (thisProcess.Name.Length > 20) {
-					processName.Text = thisProcess.Name.Substring (0, 17) + "...";
-					processName.LayoutParameters = textParams;
-					processName.SetTextSize (ComplexUnitType.Dip, 12);
-				} else {
-					processName.Text = thisProcess.Name;
-					processName.LayoutParameters = textParams;
-					processName.SetTextSize (ComplexUnitType.Dip, 12);
-				}
-
-				TextView processCPU = new TextView (this);
-				processCPU.SetTextSize (ComplexUnitType.Dip, 12);
-				processCPU.Text = thisProcess.CpuUsed.ToString();
-				processCPU.Gravity = GravityFlags.Center;
-
-				TextView processRAM = new TextView (this);
-				processRAM.SetTextSize (ComplexUnitType.Dip, 12);
-				processRAM.Text = thisProcess.RamUsed.ToString();
-				processRAM.Gravity = GravityFlags.Center;
-
-				TextView processDisk = new TextView (this);
-				processDisk.SetTextSize (ComplexUnitType.Dip, 12);
-				processDisk.Text = thisProcess.DiskUsed.ToString();
-				processDisk.Gravity = GravityFlags.Center;
-
-				TextView processNetwork = new TextView (this);
-				processNetwork.SetTextSize (ComplexUnitType.Dip, 12);
-				processNetwork.Text = thisProcess.NetworkUsed.ToString();
-				processNetwork.Gravity = GravityFlags.Center;
-
-				processRow.AddView (processName);
-				processRow.AddView (processCPU);
-				processRow.AddView (processRAM);
-				processRow.AddView (processDisk);
-				processRow.AddView (processNetwork);
-
-				ProcessesList.AddView (processRow);
-			}
+			TemperatureFragment temperatureFragment = new TemperatureFragment (dataCollection);
+			FragmentManager.BeginTransaction ().Replace (Resource.Id.frameLayout1, temperatureFragment).Commit ();
 		}
 	}
 }

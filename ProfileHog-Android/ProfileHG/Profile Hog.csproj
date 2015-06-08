@@ -60,6 +60,13 @@
     <Compile Include="GraphFragment.cs" />
     <Compile Include="ProcessFragment.cs" />
     <Compile Include="DetailsFragment.cs" />
+    <Compile Include="DataTypes\ProcessListItem.cs" />
+    <Compile Include="TemperatureFragment.cs" />
+    <Compile Include="DataTypes\Hardware.cs" />
+    <Compile Include="DataTypes\SensorValue.cs" />
+    <Compile Include="DataTypes\HardwareTypes.cs" />
+    <Compile Include="DataTypes\Sensor.cs" />
+    <Compile Include="DataTypes\TemperatureListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -1082,6 +1089,8 @@
     <AndroidResource Include="Resources\drawable-hdpi\ic_action_wizard.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_action_yinyang.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_action_youtube.png" />
+    <AndroidResource Include="Resources\layout\TemperatureTableTemplate.axml" />
+    <AndroidResource Include="Resources\layout\TemperatureLayout.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="250dp"
-    android:id="@+id/ProcessesLayout"
+    android:id="@+id/TemperatureLayout"
     android:minWidth="25px"
     android:minHeight="25px"
     android:background="#4B597C"
@@ -12,7 +12,7 @@
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/scrollView1">
+        android:id="@+id/TemperatureScrollView">
         <TableLayout
             android:minWidth="25px"
             android:minHeight="25px"
