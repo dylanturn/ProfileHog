@@ -21,6 +21,8 @@ namespace ProfileHG
 		public string parentName;
 		public TextView sensorName;
 		public TextView sensorValue;
+		public TextView highestValue;
+		public TextView averageValue;
 		public Sensor thisSensor;
 
 		public TemperatureListItem ()
@@ -34,14 +36,40 @@ namespace ProfileHG
 
 			sensorName = new TextView (sensorContext);
 			sensorValue = new TextView (sensorContext);
+			highestValue = new TextView (sensorContext);
+			averageValue = new TextView (sensorContext);
+
+			DPIScaling dpiScale = new DPIScaling(sensorContext);
+			TableRow.LayoutParams counterParams = new TableRow.LayoutParams ();
+			counterParams.LeftMargin = dpiScale.GetDPI(15);
 
 			sensorName.Text = thisSensor.SensorName;
-			sensorValue.Text = thisSensor.CurrentValue.getValue ().ToString ();
+			sensorName.SetTextSize (ComplexUnitType.Dip, 15);
+			sensorName.SetTextColor(Android.Graphics.Color.ParseColor("#FFFFFF"));
 
+			sensorValue.Text = thisSensor.CurrentValue.getValue ().ToString ();
+			sensorValue.SetTextSize (ComplexUnitType.Dip, 15);
+			sensorValue.Gravity = GravityFlags.Center;
+			sensorValue.SetTextColor(Android.Graphics.Color.ParseColor("#FFFFFF"));
+			sensorValue.LayoutParameters = counterParams;
+
+			highestValue.Text = thisSensor.HighestValue.getValue ().ToString ();
+			highestValue.SetTextSize (ComplexUnitType.Dip, 15);
+			highestValue.Gravity = GravityFlags.Center;
+			highestValue.SetTextColor(Android.Graphics.Color.ParseColor("#FFFFFF"));
+			highestValue.LayoutParameters = counterParams;
+
+			averageValue.Text = thisSensor.AverageValue.getValue ().ToString ();
+			averageValue.SetTextSize (ComplexUnitType.Dip, 15);
+			averageValue.Gravity = GravityFlags.Center;
+			averageValue.SetTextColor(Android.Graphics.Color.ParseColor("#FFFFFF"));
+			averageValue.LayoutParameters = counterParams;
 		}
 
 		public void Update(Sensor updateSensor){
 			sensorValue.Text = updateSensor.CurrentValue.getValue ().ToString ();
+			highestValue.Text = updateSensor.HighestValue.getValue ().ToString ();
+			averageValue.Text = updateSensor.AverageValue.getValue ().ToString ();
 		}
 
 

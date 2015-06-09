@@ -172,21 +172,28 @@ namespace ProfileHog_Console
                     newHardware.Sensors.Add(newSensor);
                 }
 
+                if(newHardware.Type == HardwareType.HDD.ToString())
+                {
+                    newHardware.Sensors.Add(getDiskReads());
+                    newHardware.Sensors.Add(getDiskWrites());
+                    newHardware.Sensors.Add(getDiskActive());
+                }
+
                 resourceCollection.Hardware.Add(newHardware);
                 
             }
 
             //resourceCollection.Prosesses = GetProcesses();
 
-            JSONHardware newDisk = new JSONHardware();
-            newDisk.Name = "Disk";
-            newDisk.Type = "DISK";
+            ///JSONHardware newDisk = new JSONHardware();
+            ///newDisk.Name = "HDD";
+            ///newDisk.Type = "HDD";
 
-            newDisk.Sensors.Add(getDiskReads());
-            newDisk.Sensors.Add(getDiskWrites());
-            newDisk.Sensors.Add(getDiskActive());
+            ///newDisk.Sensors.Add(getDiskReads());
+            ///newDisk.Sensors.Add(getDiskWrites());
+            ///newDisk.Sensors.Add(getDiskActive());
 
-            resourceCollection.Hardware.Add(newDisk);
+           /// resourceCollection.Hardware.Add(newDisk);
 
             performanceCounter = JsonConvert.SerializeObject(resourceCollection);
         }

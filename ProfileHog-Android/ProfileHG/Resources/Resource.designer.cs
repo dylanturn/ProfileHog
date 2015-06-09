@@ -1002,8 +1002,8 @@ namespace ProfileHG
 			// aapt resource value: 0x7f05002c
 			public const int linearLayout11 = 2131034156;
 			
-			// aapt resource value: 0x7f050053
-			public const int linearLayout2 = 2131034195;
+			// aapt resource value: 0x7f050054
+			public const int linearLayout2 = 2131034196;
 			
 			// aapt resource value: 0x7f05003b
 			public const int linearLayout9 = 2131034171;
@@ -1059,8 +1059,8 @@ namespace ProfileHG
 			// aapt resource value: 0x7f05005b
 			public const int tableRow2 = 2131034203;
 			
-			// aapt resource value: 0x7f050054
-			public const int textView1 = 2131034196;
+			// aapt resource value: 0x7f050053
+			public const int textView1 = 2131034195;
 			
 			// aapt resource value: 0x7f050057
 			public const int textView11 = 2131034199;
@@ -1077,14 +1077,14 @@ namespace ProfileHG
 			// aapt resource value: 0x7f05005c
 			public const int textView15 = 2131034204;
 			
-			// aapt resource value: 0x7f05005f
-			public const int textView16 = 2131034207;
-			
 			// aapt resource value: 0x7f05005d
-			public const int textView17 = 2131034205;
+			public const int textView16 = 2131034205;
 			
 			// aapt resource value: 0x7f05005e
-			public const int textView18 = 2131034206;
+			public const int textView17 = 2131034206;
+			
+			// aapt resource value: 0x7f05005f
+			public const int textView18 = 2131034207;
 			
 			// aapt resource value: 0x7f050003
 			public const int textView39 = 2131034115;

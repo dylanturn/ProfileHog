@@ -67,6 +67,7 @@
     <Compile Include="DataTypes\HardwareTypes.cs" />
     <Compile Include="DataTypes\Sensor.cs" />
     <Compile Include="DataTypes\TemperatureListItem.cs" />
+    <Compile Include="DataTypes\ObjectColorDictionary.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

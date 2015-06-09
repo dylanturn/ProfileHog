@@ -41,6 +41,8 @@ namespace ProfileHG
 		TextView gpuMEMAverageView;
 
 		DataCollection dataCollection;
+		bool UpdateUI = true;
+		Task UIUpdateTask;
 
 		public override void OnCreate (Bundle savedInstanceState)
 		{
@@ -60,7 +62,7 @@ namespace ProfileHG
 
 			StartContentUpdate ();
 
-			Task UIUpdateTask = new Task( () => StartUIUpdate () ,TaskCreationOptions.LongRunning);
+			UIUpdateTask = new Task( () => StartUIUpdate () ,TaskCreationOptions.LongRunning);
 			UIUpdateTask.Start();
 		}
 
@@ -93,7 +95,7 @@ namespace ProfileHG
 		}
 
 		public void StartUIUpdate(){
-			while (true) {
+			while (UpdateUI) {
 				if (this.Activity != null) {
 					this.Activity.RunOnUiThread (() => cpuCurrentView.Text = dataCollection.cpuCounter.getCurrentValue ().ToString ());
 					this.Activity.RunOnUiThread (() => ramCurrentView.Text = dataCollection.ramCounter.getCurrentValue ().ToString ());
@@ -118,6 +120,19 @@ namespace ProfileHG
 				}
 				Thread.Sleep (500);
 			}
+		}
+
+		public override void OnDestroy ()
+		{
+			/* We need to shut down the task by letting the while loop end.
+			   Once we change the UpdateUI bool to false we wait for the while loop
+			   to end.  We then dispose the task and finally dispose the fragment. */
+
+			Console.WriteLine ("Closing details fragment");
+			UpdateUI = false;
+			UIUpdateTask.Wait ();
+			UIUpdateTask.Dispose ();
+			base.OnDestroy ();
 		}
 
 	}

@@ -19,66 +19,6 @@
             p1:minHeight="25px"
             p1:layout_width="match_parent"
             p1:layout_height="match_parent"
-            p1:id="@+id/TemperatureDetails">
-            <LinearLayout
-                p1:orientation="vertical"
-                p1:minWidth="25px"
-                p1:minHeight="25px"
-                p1:layout_width="match_parent"
-                p1:layout_height="wrap_content"
-                p1:id="@+id/linearLayout2">
-                <TextView
-                    p1:text="Medium Text"
-                    p1:textAppearance="?android:attr/textAppearanceMedium"
-                    p1:layout_width="match_parent"
-                    p1:layout_height="wrap_content"
-                    p1:id="@+id/textView1" />
-                <TableLayout
-                    p1:minWidth="25px"
-                    p1:minHeight="25px"
-                    p1:id="@+id/tableLayout1"
-                    p1:layout_width="match_parent"
-                    p1:layout_height="wrap_content">
-                    <TableRow
-                        p1:id="@+id/tableRow1">
-                        <TextView
-                            p1:text="Small Text"
-                            p1:textAppearance="?android:attr/textAppearanceSmall"
-                            p1:id="@+id/textView11" />
-                        <TextView
-                            p1:text="Small Text"
-                            p1:textAppearance="?android:attr/textAppearanceSmall"
-                            p1:id="@+id/textView12" />
-                        <TextView
-                            p1:text="Small Text"
-                            p1:textAppearance="?android:attr/textAppearanceSmall"
-                            p1:id="@+id/textView13" />
-                        <TextView
-                            p1:text="Small Text"
-                            p1:textAppearance="?android:attr/textAppearanceSmall"
-                            p1:id="@+id/textView14" />
-                    </TableRow>
-                    <TableRow
-                        p1:id="@+id/tableRow2">
-                        <TextView
-                            p1:text="Small Text"
-                            p1:textAppearance="?android:attr/textAppearanceSmall"
-                            p1:id="@+id/textView15" />
-                        <TextView
-                            p1:text="Small Text"
-                            p1:textAppearance="?android:attr/textAppearanceSmall"
-                            p1:id="@+id/textView17" />
-                        <TextView
-                            p1:text="Small Text"
-                            p1:textAppearance="?android:attr/textAppearanceSmall"
-                            p1:id="@+id/textView18" />
-                        <TextView
-                            p1:text="Small Text"
-                            p1:textAppearance="?android:attr/textAppearanceSmall"
-                            p1:id="@+id/textView16" />
-                    </TableRow>
-                </TableLayout>
-            </LinearLayout>
-        </LinearLayout>
+            p1:id="@+id/TemperatureDetails" />
     </ScrollView>
 </RelativeLayout>
