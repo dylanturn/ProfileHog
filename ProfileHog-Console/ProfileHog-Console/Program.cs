@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Diagnostics;
@@ -26,7 +27,7 @@ namespace ProfileHog_Console
         static PerformanceCounter diskReadsPerformanceCounter = new PerformanceCounter();
         static PerformanceCounter diskWritesPerformanceCounter = new PerformanceCounter();
         static PerformanceCounter diskActivePerformanceCounter = new PerformanceCounter();
-        static List<ProcessInformation> processInformation = new List<ProcessInformation>();
+        
 
         static void Main(string[] args)
         {
@@ -36,10 +37,6 @@ namespace ProfileHog_Console
             Timer resourceTimer = new Timer(750);
             resourceTimer.Elapsed += getResourceUtilization;
             resourceTimer.Start();
-
-            //Timer processTimer = new Timer(1500);
-           // processTimer.Elapsed += GetProcesses;
-            //processTimer.Start();
 
             while (true)
             {
@@ -82,7 +79,7 @@ namespace ProfileHog_Console
 
             catch (Exception e)
             {
-                Console.WriteLine(e.ToString());
+                Console.WriteLine("Connection Error: " + e.ToString());
             }
 
             finally
@@ -139,10 +136,13 @@ namespace ProfileHog_Console
             thisComputer.GPUEnabled = true;
             thisComputer.CPUEnabled = true;
             thisComputer.RAMEnabled = true;
+            thisComputer.HDDEnabled = true;
+            thisComputer.FanControllerEnabled = true;
+            thisComputer.MainboardEnabled = true;
             thisComputer.Open();
 
             // Create a query for system environment variables only
-            SelectQuery query = new SelectQuery("Win32_Process", "SessionId = 1");
+            SelectQuery query = new SelectQuery("SELECT ProcessId FROM Win32_Process WHERE SessionId = 1");
 
             // Initialize an object searcher with this query
             processesSearcher = new ManagementObjectSearcher(query);
@@ -156,35 +156,44 @@ namespace ProfileHog_Console
             foreach (IHardware computerHardware in computerHardwareList)
             {
                 computerHardware.Update();
-            
+
+                foreach (IHardware subHardware in computerHardware.SubHardware)
+                    subHardware.Update();
+
                 JSONHardware newHardware = new JSONHardware();
                 newHardware.Name = computerHardware.Name;
                 newHardware.Type = computerHardware.HardwareType.ToString();
                 foreach (ISensor thisSensor in computerHardware.Sensors)
                 {
                     JSONSensor newSensor = new JSONSensor();
-                        
                     newSensor.Name = thisSensor.Name;
                     newSensor.Type = thisSensor.SensorType.ToString();
                     newSensor.Value = thisSensor.Value;
                     newHardware.Sensors.Add(newSensor);
                 }
 
+                if(newHardware.Type == HardwareType.HDD.ToString())
+                {
+                    newHardware.Sensors.Add(getDiskReads());
+                    newHardware.Sensors.Add(getDiskWrites());
+                    newHardware.Sensors.Add(getDiskActive());
+                }
+
                 resourceCollection.Hardware.Add(newHardware);
                 
             }
-            GetProcesses();
-            resourceCollection.Prosesses = processInformation;
 
-            JSONHardware newDisk = new JSONHardware();
-            newDisk.Name = "Disk";
-            newDisk.Type = "DISK";
+            //resourceCollection.Prosesses = GetProcesses();
 
-            newDisk.Sensors.Add(getDiskReads());
-            newDisk.Sensors.Add(getDiskWrites());
-            newDisk.Sensors.Add(getDiskActive());
+            ///JSONHardware newDisk = new JSONHardware();
+            ///newDisk.Name = "HDD";
+            ///newDisk.Type = "HDD";
 
-            resourceCollection.Hardware.Add(newDisk);
+            ///newDisk.Sensors.Add(getDiskReads());
+            ///newDisk.Sensors.Add(getDiskWrites());
+            ///newDisk.Sensors.Add(getDiskActive());
+
+           /// resourceCollection.Hardware.Add(newDisk);
 
             performanceCounter = JsonConvert.SerializeObject(resourceCollection);
         }
@@ -216,35 +225,35 @@ namespace ProfileHog_Console
             return readsSensor;
         }
 
-        private static void GetProcesses()
+        private static List<ProcessInformation> GetProcesses()
         {
-            //Dont use System.Diagnostics.Process, its several times more expensive that this.
-            foreach (ManagementObject wmiProcesses in processesSearcher.Get())
+            List<ProcessInformation> processInformation = new List<ProcessInformation>();
+            
+            ManagementObjectCollection ProcessCollection = processesSearcher.Get();
+
+            foreach(ManagementObject processObject in ProcessCollection)
             {
-                int index = processInformation.FindIndex(pInfo => pInfo.Id == (UInt32)wmiProcesses["ProcessId"]);
-                if (index >= 0)
+                try
                 {
-                    processInformation[index].Id = (UInt32)wmiProcesses["ProcessId"];
-                    processInformation[index].Name = (string)wmiProcesses["Caption"];
-                    processInformation[index].Responding = true;
-                    processInformation[index].CpuUsed = 0;
-                    processInformation[index].RamUsed = 0;
-                    processInformation[index].DiskUsed = 0;
-                    processInformation[index].NetworkUsed = 0;
+                    ProcessInformation thisProcessInformation = new ProcessInformation();
+                    Process thisProcess = Process.GetProcessById(Convert.ToInt32(processObject["ProcessId"]));
+                    thisProcessInformation.Id = (UInt32)processObject["ProcessId"];
+                    thisProcessInformation.Name = thisProcess.ProcessName;
+
+
+
+                    //thisProcessInformation.CpuUsed = Convert.ToInt32(thisProcess.TotalProcessorTime.Milliseconds);
+                    thisProcessInformation.RamUsed = Convert.ToInt32(thisProcess.PrivateMemorySize64);
+
+
+                    //Console.WriteLine(thisProcess.ProcessName);
+                    processInformation.Add(thisProcessInformation);
                 }
-                else
-                {
-                    ProcessInformation thisProcessInfo = new ProcessInformation();
-                    thisProcessInfo.Id = (UInt32)wmiProcesses["ProcessId"];
-                    thisProcessInfo.Name = (string)wmiProcesses["Caption"];
-                    thisProcessInfo.CpuUsed = 0;
-                    thisProcessInfo.DiskUsed = 0;
-                    thisProcessInfo.RamUsed = 0;
-                    thisProcessInfo.NetworkUsed = 0;
-                    thisProcessInfo.Responding = true;
-                    processInformation.Add(thisProcessInfo);
-                }
+                catch { }
+
             }
+
+            return processInformation;
         }
     }
 }

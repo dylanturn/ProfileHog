@@ -1,0 +1,9 @@
+C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG.UITests\bin\Debug\ProfileHG.UITests.dll
+C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG.UITests\bin\Debug\ProfileHG.UITests.pdb
+C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG.UITests\bin\Debug\nunit.framework.dll
+C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG.UITests\bin\Debug\Xamarin.UITest.dll
+C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG.UITests\bin\Debug\nunit.framework.xml
+C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG.UITests\bin\Debug\Xamarin.UITest.xml
+C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG.UITests\obj\Debug\ProfileHG.UITests.csprojResolveAssemblyReference.cache
+C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG.UITests\obj\Debug\ProfileHG.UITests.dll
+C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG.UITests\obj\Debug\ProfileHG.UITests.pdb

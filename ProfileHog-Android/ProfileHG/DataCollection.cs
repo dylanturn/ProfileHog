@@ -21,14 +21,7 @@ namespace ProfileHG
 		public string data;
 		int Port = 2004;
 
-		public CounterList cpuCounter = new CounterList ();
-		public CounterList ramCounter = new CounterList ();
-		public CounterList diskReadCounter = new CounterList ();
-		public CounterList diskWriteCounter = new CounterList ();
-		public CounterList diskActiveCounter = new CounterList ();
-		public CounterList gpuCoreCounter = new CounterList ();
-		public CounterList gpuMEMCounter = new CounterList ();
-		public List<ProcessInformation> processInformation = new List<ProcessInformation>();
+		public List<Hardware> HardwareList = new List<Hardware> ();
 
 		public override void OnStart (Android.Content.Intent intent, int startId)
 		{
@@ -152,7 +145,7 @@ namespace ProfileHG
 					//Thread.Sleep(200);
 					if (ServerConnection.Available == 0) {
 						waitingOnData = false;
-						Console.WriteLine ("No more data. DataSize: " + cleanRecieve.Length);
+						//Console.WriteLine ("No more data. DataSize: " + cleanRecieve.Length);
 					}
 				}
 
@@ -164,82 +157,53 @@ namespace ProfileHG
 					JsonValue value = JsonValue.Parse(data);
 					jsonCounters = value as JsonObject;
 
-					foreach (JsonObject processesObject in jsonCounters["Prosesses"]) {
-						int index = processInformation.FindIndex(pInfo => pInfo.Id == (UInt32)processesObject ["Id"]);
-						if (index >= 0) 
-						{
-							processInformation[index].Id = (UInt32)processesObject ["Id"];
-							processInformation[index].Name = (string)processesObject ["Name"];
-							processInformation[index].Responding = (bool)processesObject["Responding"];
-							processInformation[index].CpuUsed = (int)processesObject["CpuUsed"];
-							processInformation[index].RamUsed = (int)processesObject["RamUsed"];
-							processInformation[index].DiskUsed = (int)processesObject["DiskUsed"];
-							processInformation[index].NetworkUsed = (int)processesObject["NetworkUsed"];
-						}
-						else{
-							ProcessInformation thisProcess = new ProcessInformation ();
-							thisProcess.Id = (UInt32)processesObject ["Id"];
-							thisProcess.Name = (string)processesObject ["Name"];
-							thisProcess.Responding = (bool)processesObject["Responding"];
-							thisProcess.CpuUsed = (int)processesObject["CpuUsed"];
-							thisProcess.RamUsed = (int)processesObject["RamUsed"];
-							thisProcess.DiskUsed = (int)processesObject["DiskUsed"];
-							thisProcess.NetworkUsed = (int)processesObject["NetworkUsed"];
-							processInformation.Add (thisProcess);
-						}
-					}
-
 					foreach (JsonObject hardwareObject in jsonCounters["Hardware"]) {
-						
-						if (((string)hardwareObject ["Type"] == "GpuNvidia") || ((string)hardwareObject ["Type"] == "GpuAti")){
-							foreach (JsonObject sensorObject in hardwareObject["Sensors"]) {
-								if ((sensorObject ["Type"] == "Load") && (sensorObject ["Name"] == "GPU Core")) {
-									gpuCoreCounter.setCurrentValue (Convert.ToInt32 ((float?) sensorObject ["Value"]));
-								}
-								if ((sensorObject ["Type"] == "Load") && (sensorObject ["Name"] == "GPU Memory")) {
-									gpuMEMCounter.setCurrentValue (Convert.ToInt32 ((float?) sensorObject ["Value"]));
-								}
+
+						Hardware foundHardware = new Hardware();
+						foreach(Hardware thisHardware in HardwareList){
+
+							if(thisHardware.HardwareName == (string)hardwareObject["Name"]){
+								foundHardware = thisHardware;
 							}
+
 						}
 
-						if ((string)hardwareObject ["Type"] == "CPU") {
+						if(foundHardware.HardwareName != null){
+							
 							foreach (JsonObject sensorObject in hardwareObject["Sensors"]) {
-								if ((sensorObject ["Type"] == "Load") && (sensorObject ["Name"] == "CPU Total")) {
-									cpuCounter.setCurrentValue (Convert.ToInt32 ((float?) sensorObject ["Value"]));
-								}
-							}
-						}
 
-						if ((string)hardwareObject ["Type"] == "RAM") {
-							foreach (JsonObject sensorObject in hardwareObject["Sensors"]) {
-								if ((sensorObject ["Type"] == "Data") && (sensorObject ["Name"] == "Used Memory")) {
-									ramCounter.setCurrentValue (Convert.ToInt32 (((float?) sensorObject ["Value"])*1024)); //multiply by 1024 because the used ram is reported in GB
+								Sensor foundSensor = new Sensor();
+								if(foundHardware.SensorList.Count > 0){
+									foreach(Sensor thisSensor in foundHardware.SensorList){
+										if(thisSensor.SensorName == (string)sensorObject["Name"]){
+											foundSensor = thisSensor;
+										}
+									}
 								}
-							}
-						}
 
-						if ((string)hardwareObject ["Type"] == "DISK") {
-							foreach (JsonObject sensorObject in hardwareObject["Sensors"]) {
-								if ((sensorObject ["Type"] == "Data") && (sensorObject ["Name"] == "DiskReads")) {
-									diskReadCounter.setCurrentValue (Convert.ToInt32 ((float?) sensorObject ["Value"]));
-								}
-								if ((sensorObject ["Type"] == "Data") && (sensorObject ["Name"] == "DiskWrites")) {
-									diskWriteCounter.setCurrentValue (Convert.ToInt32 ((float?) sensorObject ["Value"]));
-								}
-								if ((sensorObject ["Type"] == "Data") && (sensorObject ["Name"] == "DiskActive")) {
-									diskActiveCounter.setCurrentValue (Convert.ToInt32 ((float?) sensorObject ["Value"]));
+								if(foundSensor.SensorName != null){
+									foundSensor.setCurrentValue(Convert.ToDouble((float?)sensorObject ["Value"]));
+								} else {
+									Sensor newSensor = new Sensor((string)sensorObject ["Name"], foundHardware, Sensor.SensorTypeFromString((string)sensorObject ["Type"]), Convert.ToDouble((float?)sensorObject ["Value"]));
+									foundHardware.SensorList.Add(newSensor);
 								}
 							}
+
+						} else {
+							Hardware newHardware = new Hardware((string)hardwareObject["Name"],  Hardware.HardwareTypeFromString((string)hardwareObject["Type"]), null);
+
+							foreach (JsonObject sensorObject in hardwareObject["Sensors"]) {
+								Sensor newSensor = new Sensor((string)sensorObject ["Name"], newHardware, Sensor.SensorTypeFromString((string)sensorObject ["Type"]), Convert.ToDouble((float?)sensorObject ["Value"]));
+								newHardware.SensorList.Add(newSensor);
+							}
+
+							HardwareList.Add(newHardware);
 						}
 					}
 
 					Thread.Sleep (500);
 				}
-				catch(Exception error){
-					Console.WriteLine ("Byte Length: " + cleanRecieve.Length);
-					Console.WriteLine (data);
-					Console.WriteLine ("ERROR: " + error.Message);
-				}
+				catch(Exception e){Console.WriteLine (e.Message);}
 			}
 
 		}

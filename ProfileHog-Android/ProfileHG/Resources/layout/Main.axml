@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:id="@+id/MenuBarLayout"
         android:layout_weight=".19"
-        android:layout_height="70dp"
+        android:layout_height="35dp"
         android:layout_gravity="center_horizontal">
         <LinearLayout
             android:orientation="horizontal"
@@ -53,7 +53,7 @@
                 android:minHeight="25px"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:id="@+id/summaryLayout"
+                android:id="@+id/GraphMenuLayout"
                 android:background="#4B597C"
                 android:layout_marginTop="5dp">
                 <LinearLayout
@@ -62,13 +62,13 @@
                     android:minHeight="25px"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:id="@+id/summaryText"
+                    android:id="@+id/GraphMenuText"
                     android:layout_gravity="center">
                     <Button
                         android:text="Graph"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/summaryView"
+                        android:id="@+id/GraphMenuButton"
                         android:background="#4B597C"
                         android:textColor="#ffffff"
                         android:layout_marginTop="10dp" />
@@ -78,7 +78,7 @@
                     android:minHeight="10px"
                     android:layout_width="match_parent"
                     android:layout_height="5dp"
-                    android:id="@+id/activeButtonLayout"
+                    android:id="@+id/ActiveButtonLayout"
                     android:background="#0067B2"
                     android:layout_marginTop="5dp" />
             </LinearLayout>
@@ -86,7 +86,7 @@
                 android:orientation="vertical"
                 android:minWidth="25px"
                 android:minHeight="25px"
-                android:id="@+id/detailsLayout"
+                android:id="@+id/DetailsMenuLayout"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:background="#4B597C"
@@ -98,12 +98,12 @@
                     android:minHeight="25px"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:id="@+id/detailsText">
+                    android:id="@+id/DetailsMenuText">
                     <Button
                         android:text="Details"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/detailsView"
+                        android:id="@+id/DetailsMenuButton"
                         android:background="#4B597C"
                         android:textColor="#ffffff"
                         android:layout_marginTop="10dp" />
@@ -115,7 +115,7 @@
                 android:minHeight="25px"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:id="@+id/ProcessesLayout"
+                android:id="@+id/TemperatureMenuLayout"
                 android:background="#4B597C"
                 android:layout_marginLeft="2.5dp"
                 android:layout_marginTop="5dp">
@@ -125,12 +125,12 @@
                     android:minHeight="25px"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:id="@+id/ProcessesText">
+                    android:id="@+id/TemeratureMenuText">
                     <Button
-                        android:text="Processes"
+                        android:text="Temps"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/ProcessesView"
+                        android:id="@+id/TemperatureMenuButton"
                         android:background="#4B597C"
                         android:textColor="#ffffff"
                         android:layout_marginTop="10dp" />
@@ -142,16 +142,15 @@
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="380dp"
         android:id="@+id/frameLayout1" />
     <LinearLayout
         android:orientation="horizontal"
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:id="@+id/linearLayout10"
-        android:layout_weight=".19" />
+        android:layout_height="25dp"
+        android:id="@+id/linearLayout10" />
     <LinearLayout
         android:orientation="horizontal"
         android:minWidth="25px"
