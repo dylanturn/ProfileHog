@@ -38,6 +38,8 @@ namespace ProfileHG
 			Console.WriteLine ("SimpleService", "SimpleService stopped");      
 		}
 
+		// This needs to get redone.  If you have more than one computer in the house you should be prompted to choose
+		// which machine you want to connect to.
 		private Socket ConnectToServer(TcpListener newListner){
 			bool isConnected = false;
 			Console.WriteLine("Creating Broadcast Socket");

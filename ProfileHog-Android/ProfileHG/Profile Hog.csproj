@@ -1087,6 +1087,7 @@
     <AndroidResource Include="Resources\drawable-hdpi\ic_action_youtube.png" />
     <AndroidResource Include="Resources\layout\TemperatureTableTemplate.axml" />
     <AndroidResource Include="Resources\layout\TemperatureLayout.axml" />
+    <AndroidResource Include="Resources\layout\ProfileHogMain.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

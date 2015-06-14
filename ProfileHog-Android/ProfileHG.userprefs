@@ -1,10 +1,8 @@
 ﻿<Properties StartupItem="ProfileHG\Profile Hog.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus 10 (KitKat)" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ProfileHG\DataTypes\Sensor.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus 5 (Lollipop)" />
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="ProfileHG\MainActivity.cs" Line="1" Column="1" />
-      <File FileName="ProfileHG\Fragments\UpdateQuickView.cs" Line="61" Column="112" />
-      <File FileName="ProfileHG\DataTypes\Sensor.cs" Line="114" Column="3" />
+      <File FileName="ProfileHG\MainActivity.cs" Line="38" Column="52" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -14,5 +12,5 @@
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.Profile_220Hog AndroidDesignerPreferredDevice="Nexus 5" AndroidDesignerPreferredTheme="Theme.DeviceDefault.Dialog.NoActionBar" />
+  <MonoDevelop.Ide.ItemProperties.Profile_220Hog AndroidDesignerPreferredDevice="3.7&quot; WVGA (Nexus One)" AndroidDesignerPreferredTheme="Theme.DeviceDefault.Dialog.NoActionBar" />
 </Properties>

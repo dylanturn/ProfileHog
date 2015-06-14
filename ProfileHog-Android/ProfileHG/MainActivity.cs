@@ -34,8 +34,10 @@ namespace ProfileHG
 		{
 			base.OnCreate (bundle);
 			
-			SetContentView (Resource.Layout.Main);
+			//SetContentView (Resource.Layout.Main);
+			SetContentView (Resource.Layout.ProfileHogMain);
 
+			/*
 			dataCollection.OnStartCommand (this.Intent, StartCommandFlags.Retry, 0);
 			activeButtonLayout = FindViewById<LinearLayout> (Resource.Id.ActiveButtonLayout);
 			dpiScaling = new DPIScaling (this);
@@ -60,7 +62,7 @@ namespace ProfileHG
 
 			temperatureButton.Click += delegate {
 				ShowTemperature();
-			};
+			};*/
 		}
 		
 		private void ShowGraph(){
