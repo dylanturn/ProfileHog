@@ -44,15 +44,8 @@ namespace ProfileHG
 			throw e;
 		}
 
+
 		public Sensor(){
-			SensorValueDictionary = new Dictionary<Types, string> ();
-			SensorFormatDictionary = new Dictionary<Types, string> ();
-			SetupValueDictionary ();
-			SetupFormatDictionary ();
-			SensorUnitType = SensorValueDictionary [SensorType];
-			SensorValueFormat = SensorFormatDictionary [SensorType];
-			HighestValue = new SensorValue ();
-			AverageValue = new SensorValue ();
 		}
 
 		public Sensor (string Name, Hardware Parent, Types Type, double value){
@@ -70,19 +63,19 @@ namespace ProfileHG
 			HighestValue = new SensorValue ();
 			AverageValue = new SensorValue ();
 
-			if (Parent.HardwareType == Hardware.Types.RAM) {
-				this.setCurrentValue ((value*1024));
-			} else {
-				this.setCurrentValue (value);
-			}
-
+			this.setCurrentValue (value);
 		}
 
 		public void setCurrentValue(double value){
 
 			SensorValue newItem;
 
-			if (SensorParent.HardwareType == Hardware.Types.RAM) {
+			if ((this.SensorType == Types.Temperature) && (this.SensorParent.HardwareType == Hardware.Types.GpuNvidia)) {
+				Console.WriteLine (this.SensorName + " : " + value.ToString());
+			}
+			//Im doing this because I prefer to show memory used in MB.
+			//One day GB will preffered, but I don't think we're quire there yet.
+			if ((this.SensorType == Types.Data) && (this.SensorParent.HardwareType == Hardware.Types.RAM)) {
 				
 				newItem = new SensorValue ((value*1024));
 

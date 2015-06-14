@@ -42,6 +42,7 @@ namespace ProfileHG
 			sensorNamesChecked.Add ("Used Memory");
 			sensorNamesChecked.Add ("GPU Core");
 			sensorNamesChecked.Add ("GPU Memory");
+			sensorNamesChecked.Add ("GPU Memory Controller");
 			sensorNamesChecked.Add ("Used Space");
 			sensorNamesChecked.Add ("DiskReads");
 			sensorNamesChecked.Add ("DiskWrites");
@@ -153,32 +154,32 @@ namespace ProfileHG
 
 
 								TableRow.LayoutParams sensorParams = new TableRow.LayoutParams ();
-								sensorParams.Width = dpiScale.GetDPI(100);
+								sensorParams.Width = dpiScale.GetDPI(140);
 
 								TableRow.LayoutParams counterParams = new TableRow.LayoutParams ();
-								counterParams.LeftMargin = dpiScale.GetDPI(15);
+								counterParams.LeftMargin = dpiScale.GetDPI(10);
 
 								TextView sensorTitleText = new TextView (DetailsParent.Context);
 								sensorTitleText.Text = "Sensor";
-								sensorTitleText.SetTextSize (ComplexUnitType.Dip, 16);
+								sensorTitleText.SetTextSize (ComplexUnitType.Dip, 15);
 								sensorTitleText.SetTextColor(Android.Graphics.Color.ParseColor("#FFFFFF"));
 								sensorTitleText.LayoutParameters = sensorParams;
 
 								TextView currentTitleText = new TextView (DetailsParent.Context);
 								currentTitleText.Text = "Current";
-								currentTitleText.SetTextSize (ComplexUnitType.Dip, 16);
+								currentTitleText.SetTextSize (ComplexUnitType.Dip, 15);
 								currentTitleText.SetTextColor(Android.Graphics.Color.ParseColor("#FFFFFF"));
 								currentTitleText.LayoutParameters = counterParams;
 
 								TextView highestTitleText = new TextView (DetailsParent.Context);
 								highestTitleText.Text = "Highest";
-								highestTitleText.SetTextSize (ComplexUnitType.Dip, 16);
+								highestTitleText.SetTextSize (ComplexUnitType.Dip, 15);
 								highestTitleText.SetTextColor(Android.Graphics.Color.ParseColor("#FFFFFF"));
 								highestTitleText.LayoutParameters = counterParams;
 
 								TextView averageTitleText = new TextView (DetailsParent.Context);
 								averageTitleText.Text = "Average";
-								averageTitleText.SetTextSize (ComplexUnitType.Dip, 16);
+								averageTitleText.SetTextSize (ComplexUnitType.Dip, 15);
 								averageTitleText.SetTextColor(Android.Graphics.Color.ParseColor("#FFFFFF"));
 								averageTitleText.LayoutParameters = counterParams;
 
@@ -194,15 +195,19 @@ namespace ProfileHG
 							}
 
 							foreach (Sensor thisSensor in thisHardware.SensorList) {
+								
 								if (sensorTypesChecked.Contains(thisSensor.SensorType) && sensorNamesChecked.Contains(thisSensor.SensorName)) {
 									TemperatureListItem foundListItem = FindItemByParent (thisHardware.HardwareName, thisSensor);
 									if (foundListItem != null) {
 
 										if(this.Activity != null){
+											
 											this.Activity.RunOnUiThread (() => foundListItem.Update(thisSensor));
 										}
 
-									} else {
+									}
+
+									else {
 
 										TableRow ItemRow = new TableRow (DetailsParent.Context);
 										TemperatureListItem newItem = new TemperatureListItem (thisHardware.HardwareName, thisSensor, this.Activity);

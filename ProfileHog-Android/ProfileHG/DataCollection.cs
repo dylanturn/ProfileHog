@@ -138,14 +138,14 @@ namespace ProfileHG
 						//Copy rawRecieve, starting at 0, into cleanrecieve, starting at the next null space.
 							Array.Copy(rawRecieve, 0, cleanRecieve, tempRecieve.Length, i + 1);
 					}
-
 					
-					//At the end of this we should have a single byte array that contains all the data, and only the data.
-					//If there is no more data waiting us, then we end the loop.
-					//Thread.Sleep(200);
+					// At the end of this we should have a single byte array that contains all the data, and only the data.
+					// If there is no more data waiting us, then we end the loop.
+					// We also sleep the thread to make sure that any packets that are on their way have time to arrive.
+					// This is hacking as hell.  I have some ideas on how to fix it but I'll do it later.
+					Thread.Sleep(75);
 					if (ServerConnection.Available == 0) {
 						waitingOnData = false;
-						//Console.WriteLine ("No more data. DataSize: " + cleanRecieve.Length);
 					}
 				}
 
@@ -156,9 +156,10 @@ namespace ProfileHG
 					
 					JsonValue value = JsonValue.Parse(data);
 					jsonCounters = value as JsonObject;
-
+					// Iterate through the retrieved hardware objects so we can add the information to our dataset.
 					foreach (JsonObject hardwareObject in jsonCounters["Hardware"]) {
 
+						// Iterate through the dataset to see if we can find the hardware object.
 						Hardware foundHardware = new Hardware();
 						foreach(Hardware thisHardware in HardwareList){
 
@@ -168,28 +169,37 @@ namespace ProfileHG
 
 						}
 
+						// We found the piece of hardware in the collection.  We now need to look at its sensors
 						if(foundHardware.HardwareName != null){
 							
 							foreach (JsonObject sensorObject in hardwareObject["Sensors"]) {
 
+								// Iterate through the hardware objects sensor list.
 								Sensor foundSensor = new Sensor();
 								if(foundHardware.SensorList.Count > 0){
 									foreach(Sensor thisSensor in foundHardware.SensorList){
-										if(thisSensor.SensorName == (string)sensorObject["Name"]){
+										if((thisSensor.SensorName == (string)sensorObject["Name"]) && (thisSensor.SensorType == Sensor.SensorTypeFromString((string)sensorObject ["Type"]))){
 											foundSensor = thisSensor;
 										}
 									}
 								}
 
+								// If we find the sensor we just go ahead and update the value.
 								if(foundSensor.SensorName != null){
+									Console.WriteLine("Found: {0} Type: {1} Value: {2}", foundSensor.SensorName,(string)sensorObject ["Type"], (float?)sensorObject ["Value"]);
 									foundSensor.setCurrentValue(Convert.ToDouble((float?)sensorObject ["Value"]));
-								} else {
+								}
+
+								// The sensor wasn't found.  This means we need to add it.
+								else {
 									Sensor newSensor = new Sensor((string)sensorObject ["Name"], foundHardware, Sensor.SensorTypeFromString((string)sensorObject ["Type"]), Convert.ToDouble((float?)sensorObject ["Value"]));
 									foundHardware.SensorList.Add(newSensor);
 								}
 							}
 
-						} else {
+						} 
+						// If we get to this else statement it means this piece of hardware doesnt exist in the collection.  We will now need to add it and its sensors.
+						else {
 							Hardware newHardware = new Hardware((string)hardwareObject["Name"],  Hardware.HardwareTypeFromString((string)hardwareObject["Type"]), null);
 
 							foreach (JsonObject sensorObject in hardwareObject["Sensors"]) {
@@ -203,11 +213,13 @@ namespace ProfileHG
 
 					Thread.Sleep (500);
 				}
+				// Just incase somthing goes wrong.
 				catch(Exception e){Console.WriteLine (e.Message);}
 			}
 
 		}
 
+		// I forgot what this was for...
 		public override Android.OS.IBinder OnBind (Android.Content.Intent intent)
 		{
 			throw new NotImplementedException ();
