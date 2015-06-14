@@ -21,19 +21,7 @@ namespace ProfileHG
 		public string data;
 		int Port = 2004;
 
-		public CounterList cpuCounter = new CounterList ();
-		public CounterList ramCounter = new CounterList ();
-		public CounterList diskReadCounter = new CounterList ();
-		public CounterList diskWriteCounter = new CounterList ();
-		public CounterList diskActiveCounter = new CounterList ();
-		public CounterList gpuCoreCounter = new CounterList ();
-		public CounterList gpuMEMCounter = new CounterList ();
-
 		public List<Hardware> HardwareList = new List<Hardware> ();
-
-
-		//public List<CounterList> HardwareList = new List<CounterList> ();
-		public List<ProcessInformation> processInformation = new List<ProcessInformation>();
 
 		public override void OnStart (Android.Content.Intent intent, int startId)
 		{
@@ -170,12 +158,14 @@ namespace ProfileHG
 					jsonCounters = value as JsonObject;
 
 					foreach (JsonObject hardwareObject in jsonCounters["Hardware"]) {
-						
+
 						Hardware foundHardware = new Hardware();
 						foreach(Hardware thisHardware in HardwareList){
+
 							if(thisHardware.HardwareName == (string)hardwareObject["Name"]){
 								foundHardware = thisHardware;
 							}
+
 						}
 
 						if(foundHardware.HardwareName != null){
@@ -192,67 +182,22 @@ namespace ProfileHG
 								}
 
 								if(foundSensor.SensorName != null){
-									foundSensor.setCurrentValue(Convert.ToInt32((float?)sensorObject ["Value"]));
+									foundSensor.setCurrentValue(Convert.ToDouble((float?)sensorObject ["Value"]));
 								} else {
-									Sensor newSensor = new Sensor((string)sensorObject ["Name"], foundHardware, Sensor.SensorTypeFromString((string)sensorObject ["Type"]), Convert.ToInt32((float?)sensorObject ["Value"]));
+									Sensor newSensor = new Sensor((string)sensorObject ["Name"], foundHardware, Sensor.SensorTypeFromString((string)sensorObject ["Type"]), Convert.ToDouble((float?)sensorObject ["Value"]));
 									foundHardware.SensorList.Add(newSensor);
 								}
 							}
 
 						} else {
-							
 							Hardware newHardware = new Hardware((string)hardwareObject["Name"],  Hardware.HardwareTypeFromString((string)hardwareObject["Type"]), null);
 
 							foreach (JsonObject sensorObject in hardwareObject["Sensors"]) {
-								Sensor newSensor = new Sensor((string)sensorObject ["Name"], newHardware, Sensor.SensorTypeFromString((string)sensorObject ["Type"]), Convert.ToInt32((float?)sensorObject ["Value"]));
+								Sensor newSensor = new Sensor((string)sensorObject ["Name"], newHardware, Sensor.SensorTypeFromString((string)sensorObject ["Type"]), Convert.ToDouble((float?)sensorObject ["Value"]));
 								newHardware.SensorList.Add(newSensor);
 							}
+
 							HardwareList.Add(newHardware);
-						}
-					}
-					
-					foreach (JsonObject hardwareObject in jsonCounters["Hardware"]) {
-
-
-						if (((string)hardwareObject ["Type"] == "GpuNvidia") || ((string)hardwareObject ["Type"] == "GpuAti")){
-							foreach (JsonObject sensorObject in hardwareObject["Sensors"]) {
-								if (((string)sensorObject ["Type"] == "Load") && (sensorObject ["Name"] == "GPU Core")) {
-									gpuCoreCounter.setCurrentValue (Convert.ToInt32 ((float?) sensorObject ["Value"]));
-								}
-								if (((string)sensorObject ["Type"] == "Load") && (sensorObject ["Name"] == "GPU Memory")) {
-									gpuMEMCounter.setCurrentValue (Convert.ToInt32 ((float?) sensorObject ["Value"]));
-								}
-							}
-						}
-
-						if ((string)hardwareObject ["Type"] == "CPU") {
-							foreach (JsonObject sensorObject in hardwareObject["Sensors"]) {
-								if (((string)sensorObject ["Type"] == "Load") && (sensorObject ["Name"] == "CPU Total")) {
-									cpuCounter.setCurrentValue (Convert.ToInt32 ((float?) sensorObject ["Value"]));
-								}
-							}
-						}
-
-						if ((string)hardwareObject ["Type"] == "RAM") {
-							foreach (JsonObject sensorObject in hardwareObject["Sensors"]) {
-								if (((string)sensorObject ["Type"] == "Data") && (sensorObject ["Name"] == "Used Memory")) {
-									ramCounter.setCurrentValue (Convert.ToInt32 (((float?) sensorObject ["Value"])*1024)); //multiply by 1024 because the used ram is reported in GB
-								}
-							}
-						}
-
-						if ((string)hardwareObject ["Type"] == "DISK") {
-							foreach (JsonObject sensorObject in hardwareObject["Sensors"]) {
-								if (((string)sensorObject ["Type"] == "Data") && ((string)sensorObject ["Name"] == "DiskReads")) {
-									diskReadCounter.setCurrentValue (Convert.ToInt32 ((float?) sensorObject ["Value"]));
-								}
-								if (((string)sensorObject ["Type"] == "Data") && ((string)sensorObject ["Name"] == "DiskWrites")) {
-									diskWriteCounter.setCurrentValue (Convert.ToInt32 ((float?) sensorObject ["Value"]));
-								}
-								if (((string)sensorObject ["Type"] == "Data") && ((string)sensorObject ["Name"] == "DiskActive")) {
-									diskActiveCounter.setCurrentValue (Convert.ToInt32 ((float?) sensorObject ["Value"]));
-								}
-							}
 						}
 					}
 

@@ -47,19 +47,19 @@ namespace ProfileHG
 			sensorName.SetTextSize (ComplexUnitType.Dip, 15);
 			sensorName.SetTextColor(Android.Graphics.Color.ParseColor("#FFFFFF"));
 
-			sensorValue.Text = thisSensor.CurrentValue.getValue ().ToString ();
+			sensorValue.Text = thisSensor.CurrentValue.getValue ().ToString (thisSensor.SensorValueFormat) + " " + thisSensor.SensorUnitType;
 			sensorValue.SetTextSize (ComplexUnitType.Dip, 15);
 			sensorValue.Gravity = GravityFlags.Center;
 			sensorValue.SetTextColor(Android.Graphics.Color.ParseColor("#FFFFFF"));
 			sensorValue.LayoutParameters = counterParams;
 
-			highestValue.Text = thisSensor.HighestValue.getValue ().ToString ();
+			highestValue.Text = thisSensor.HighestValue.getValue ().ToString (thisSensor.SensorValueFormat) + " " + thisSensor.SensorUnitType;
 			highestValue.SetTextSize (ComplexUnitType.Dip, 15);
 			highestValue.Gravity = GravityFlags.Center;
 			highestValue.SetTextColor(Android.Graphics.Color.ParseColor("#FFFFFF"));
 			highestValue.LayoutParameters = counterParams;
 
-			averageValue.Text = thisSensor.AverageValue.getValue ().ToString ();
+			averageValue.Text = thisSensor.AverageValue.getValue ().ToString (thisSensor.SensorValueFormat) + " " + thisSensor.SensorUnitType;
 			averageValue.SetTextSize (ComplexUnitType.Dip, 15);
 			averageValue.Gravity = GravityFlags.Center;
 			averageValue.SetTextColor(Android.Graphics.Color.ParseColor("#FFFFFF"));
@@ -67,9 +67,9 @@ namespace ProfileHG
 		}
 
 		public void Update(Sensor updateSensor){
-			sensorValue.Text = updateSensor.CurrentValue.getValue ().ToString ();
-			highestValue.Text = updateSensor.HighestValue.getValue ().ToString ();
-			averageValue.Text = updateSensor.AverageValue.getValue ().ToString ();
+			sensorValue.Text = updateSensor.CurrentValue.getValue ().ToString (thisSensor.SensorValueFormat) + " " + thisSensor.SensorUnitType;
+			highestValue.Text = updateSensor.HighestValue.getValue ().ToString (thisSensor.SensorValueFormat) + " " + thisSensor.SensorUnitType;
+			averageValue.Text = updateSensor.AverageValue.getValue ().ToString (thisSensor.SensorValueFormat) + " " + thisSensor.SensorUnitType;
 		}
 
 

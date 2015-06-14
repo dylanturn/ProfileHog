@@ -25,6 +25,7 @@ namespace ProfileHG
 	public class MainActivity : Activity
 	{
 		public DataCollection dataCollection = new DataCollection ();
+		//public UserSelectedObjects userSelectedSensors = new UserSelectedObjects ();
 
 		LinearLayout activeButtonLayout;
 		DPIScaling dpiScaling;
@@ -36,7 +37,7 @@ namespace ProfileHG
 			SetContentView (Resource.Layout.Main);
 
 			dataCollection.OnStartCommand (this.Intent, StartCommandFlags.Retry, 0);
-			activeButtonLayout = FindViewById<LinearLayout> (Resource.Id.activeButtonLayout);
+			activeButtonLayout = FindViewById<LinearLayout> (Resource.Id.ActiveButtonLayout);
 			dpiScaling = new DPIScaling (this);
 
 			GraphFragment graphFragment = new GraphFragment ();
@@ -45,9 +46,9 @@ namespace ProfileHG
 			Task quickViewUpdateTask = new Task( () => new UpdateQuickView (dataCollection, this).StartUIUpdate (),TaskCreationOptions.LongRunning);
 			quickViewUpdateTask.Start();
 
-			Button detailsButton = FindViewById<Button> (Resource.Id.detailsView);
-			Button graphButton = FindViewById<Button> (Resource.Id.summaryView);
-			Button processesButton = FindViewById<Button> (Resource.Id.ProcessesView);
+			Button detailsButton = FindViewById<Button> (Resource.Id.DetailsMenuButton);
+			Button graphButton = FindViewById<Button> (Resource.Id.GraphMenuButton);
+			Button temperatureButton = FindViewById<Button> (Resource.Id.TemperatureMenuButton);
 
 			detailsButton.Click += delegate {
 				ShowDetails();
@@ -57,18 +58,17 @@ namespace ProfileHG
 				ShowGraph();
 			};
 
-			processesButton.Click += delegate {
-				ShowProcesses();
+			temperatureButton.Click += delegate {
+				ShowTemperature();
 			};
-
 		}
 		
 		private void ShowGraph(){
-			LinearLayout summaryButtonLayout = FindViewById<LinearLayout> (Resource.Id.summaryLayout);
+			LinearLayout summaryButtonLayout = FindViewById<LinearLayout> (Resource.Id.GraphMenuLayout);
 			LinearLayout departingView = (LinearLayout)activeButtonLayout.Parent;
 			departingView.RemoveView(activeButtonLayout);
 
-			LinearLayout summaryText = FindViewById<LinearLayout> (Resource.Id.summaryText);
+			LinearLayout summaryText = FindViewById<LinearLayout> (Resource.Id.GraphMenuText);
 			ViewGroup.LayoutParams summaryParams = summaryText.LayoutParameters;
 
 			DisplayMetrics metrics = new DisplayMetrics();         
@@ -83,11 +83,11 @@ namespace ProfileHG
 		}
 
 		private void ShowDetails(){
-			LinearLayout detailsButtonLayout = FindViewById<LinearLayout> (Resource.Id.detailsLayout);
+			LinearLayout detailsButtonLayout = FindViewById<LinearLayout> (Resource.Id.DetailsMenuLayout);
 			LinearLayout departingView = (LinearLayout)activeButtonLayout.Parent;
 			departingView.RemoveView(activeButtonLayout);
 
-			LinearLayout detailsText = FindViewById<LinearLayout> (Resource.Id.detailsText);
+			LinearLayout detailsText = FindViewById<LinearLayout> (Resource.Id.DetailsMenuText);
 			ViewGroup.LayoutParams detailParams = detailsText.LayoutParameters;
 
 			DisplayMetrics metrics = new DisplayMetrics();         
@@ -101,22 +101,21 @@ namespace ProfileHG
 			FragmentManager.BeginTransaction ().Replace (Resource.Id.frameLayout1, detailsFragment).Commit ();
 		}
 
-		private void ShowProcesses(){
-			LinearLayout processesButtonLayout = FindViewById<LinearLayout> (Resource.Id.ProcessesLayout);
+		private void ShowTemperature(){
+			LinearLayout temperatureButtonLayout = FindViewById<LinearLayout> (Resource.Id.TemperatureMenuLayout);
 			LinearLayout departingView = (LinearLayout)activeButtonLayout.Parent;
 			departingView.RemoveView(activeButtonLayout);
 
-			LinearLayout processesText = FindViewById<LinearLayout> (Resource.Id.ProcessesText);
-			ViewGroup.LayoutParams processesParams = processesText.LayoutParameters;
+			LinearLayout temperatureText = FindViewById<LinearLayout> (Resource.Id.TemeratureMenuText);
+			ViewGroup.LayoutParams temperatureParams = temperatureText.LayoutParameters;
 
 			DisplayMetrics metrics = new DisplayMetrics();         
 			WindowManager.DefaultDisplay.GetMetrics(metrics);
 			int height = dpiScaling.GetDPI(30);
 
-			processesParams.Height = height;
-			processesButtonLayout.AddView(activeButtonLayout,1);
+			temperatureParams.Height = height;
+			temperatureButtonLayout.AddView(activeButtonLayout,1);
 
-			ProcessFragment processFragment = new ProcessFragment ();
 			TemperatureFragment temperatureFragment = new TemperatureFragment (dataCollection);
 			FragmentManager.BeginTransaction ().Replace (Resource.Id.frameLayout1, temperatureFragment).Commit ();
 		}

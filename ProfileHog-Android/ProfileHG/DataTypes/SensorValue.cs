@@ -4,23 +4,23 @@ namespace ProfileHG
 {
 	public class SensorValue
 	{
-		int value;
+		double value;
 		DateTime dateStamp;
 
 		public SensorValue(){
 		}
 
-		public SensorValue(int newValue){
+		public SensorValue(double newValue){
 			value = newValue;
 			dateStamp = DateTime.Now;
 		}
 
-		public void setValue(int newValue){
+		public void setValue(double newValue){
 			value = newValue;
 			dateStamp = DateTime.Now;
 		}
 
-		public int getValue(){
+		public double getValue(){
 			return value;
 		}
 

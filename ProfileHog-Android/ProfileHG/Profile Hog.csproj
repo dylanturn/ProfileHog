@@ -51,23 +51,19 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataCollection.cs" />
-    <Compile Include="ViewUpdates\UpdateDetails.cs" />
-    <Compile Include="ViewUpdates\UpdateQuickView.cs" />
-    <Compile Include="DataTypes\CounterList.cs" />
-    <Compile Include="DataTypes\CounterListItem.cs" />
-    <Compile Include="DataTypes\ProcessInformation.cs" />
     <Compile Include="DPIScaling.cs" />
     <Compile Include="GraphFragment.cs" />
-    <Compile Include="ProcessFragment.cs" />
-    <Compile Include="DetailsFragment.cs" />
-    <Compile Include="DataTypes\ProcessListItem.cs" />
-    <Compile Include="TemperatureFragment.cs" />
     <Compile Include="DataTypes\Hardware.cs" />
     <Compile Include="DataTypes\SensorValue.cs" />
     <Compile Include="DataTypes\HardwareTypes.cs" />
     <Compile Include="DataTypes\Sensor.cs" />
     <Compile Include="DataTypes\TemperatureListItem.cs" />
     <Compile Include="DataTypes\ObjectColorDictionary.cs" />
+    <Compile Include="DataTypes\UserSelectedObjects.cs" />
+    <Compile Include="Fragments\UpdateDetails.cs" />
+    <Compile Include="Fragments\UpdateQuickView.cs" />
+    <Compile Include="Fragments\TemperatureFragment.cs" />
+    <Compile Include="Fragments\DetailsFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -88,7 +84,6 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\Icon.png" />
     <AndroidResource Include="Resources\layout\DetailsLayout.axml" />
     <AndroidResource Include="Resources\layout\GraphLayout.axml" />
-    <AndroidResource Include="Resources\layout\ProcessesLayout.axml" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ProfileHogBackground.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_action_achievement.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_action_add.png" />
@@ -1095,7 +1090,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
-    <Folder Include="ViewUpdates\" />
     <Folder Include="DataTypes\" />
+    <Folder Include="Fragments\" />
   </ItemGroup>
 </Project>
