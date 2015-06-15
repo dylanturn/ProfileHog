@@ -8,119 +8,100 @@
         p1:minWidth="25px"
         p1:minHeight="25px"
         p1:layout_width="match_parent"
-        p1:layout_height="50dp"
-        p1:id="@+id/TitleLayout"
-        p1:background="#0099CC"
-        p1:layout_alignParentTop="true"
-        p1:layout_alignParentLeft="true"
-        p1:layout_alignWithParentIfMissing="false"
-        p1:layout_centerVertical="false"
-        p1:layout_centerHorizontal="false"
-        p1:layout_centerInParent="false"
-        p1:layout_alignParentRight="false"
-        p1:layout_alignParentBottom="false">
-        <TextView
-            p1:text="Profile Hog"
-            p1:textAppearance="?android:attr/textAppearanceLarge"
-            p1:layout_width="wrap_content"
-            p1:layout_height="wrap_content"
-            p1:id="@+id/TitleText"
-            p1:layout_marginLeft="10dp"
-            p1:layout_marginTop="10dp"
-            p1:textColor="#ffffff" />
-    </RelativeLayout>
-    <RelativeLayout
-        p1:minWidth="25px"
-        p1:minHeight="25px"
-        p1:layout_width="wrap_content"
         p1:layout_height="wrap_content"
-        p1:id="@+id/NavigationLayout"
-        p1:layout_below="@+id/TitleLayout"
-        p1:layout_alignWithParentIfMissing="false"
-        p1:layout_centerVertical="false"
-        p1:layout_centerInParent="false"
-        p1:layout_alignParentTop="false"
-        p1:layout_alignParentRight="false"
-        p1:layout_alignParentBottom="false"
-        p1:layout_centerHorizontal="true"
-        p1:layout_alignParentLeft="false"
-        p1:layout_marginTop="5dp">
-        <LinearLayout
-            p1:orientation="vertical"
+        p1:id="@+id/HeaderLayout"
+        p1:layout_alignParentTop="true"
+        p1:elevation="20dp"
+        p1:background="#ffffff"
+        p1:paddingBottom="10dp">
+        <RelativeLayout
             p1:minWidth="25px"
             p1:minHeight="25px"
-            p1:id="@+id/GraphMenuLayout"
+            p1:layout_width="match_parent"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/TitleLayout"
             p1:background="#0099CC"
+            p1:layout_alignParentTop="true"
+            p1:layout_alignParentLeft="true"
+            p1:layout_alignWithParentIfMissing="false"
+            p1:layout_centerVertical="false"
+            p1:layout_centerHorizontal="false"
+            p1:layout_centerInParent="false"
+            p1:layout_alignParentRight="false"
+            p1:layout_alignParentBottom="false">
+            <TextView
+                p1:text="Profile Hog"
+                p1:textAppearance="?android:attr/textAppearanceLarge"
+                p1:layout_width="wrap_content"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/TitleText"
+                p1:layout_marginLeft="10dp"
+                p1:layout_marginTop="10dp"
+                p1:textColor="#ffffff"
+                p1:layout_marginBottom="10dp"
+                p1:typeface="sans"
+                p1:textStyle="bold"
+                p1:textSize="24dp" />
+        </RelativeLayout>
+        <RelativeLayout
+            p1:minWidth="25px"
+            p1:minHeight="25px"
             p1:layout_width="wrap_content"
-            p1:layout_height="wrap_content">
+            p1:layout_height="wrap_content"
+            p1:id="@+id/NavigationLayout"
+            p1:layout_alignWithParentIfMissing="false"
+            p1:layout_centerVertical="false"
+            p1:layout_centerInParent="false"
+            p1:layout_alignParentTop="false"
+            p1:layout_alignParentRight="false"
+            p1:layout_alignParentBottom="false"
+            p1:layout_alignParentLeft="false"
+            p1:layout_below="@+id/TitleLayout"
+            p1:layout_marginTop="10dp"
+            p1:layout_centerHorizontal="true">
             <Button
                 p1:text="Graph"
                 p1:id="@+id/GraphMenuButton"
                 p1:background="#0099CC"
                 p1:textColor="#ffffff"
-                p1:layout_width="match_parent"
-                p1:layout_height="25dp" />
-            <LinearLayout
-                p1:orientation="horizontal"
-                p1:minHeight="10px"
-                p1:layout_width="match_parent"
-                p1:layout_height="5dp"
-                p1:id="@+id/ActiveGraphIndicator"
-                p1:background="#0067B2"
-                p1:layout_marginTop="5dp" />
-        </LinearLayout>
-        <LinearLayout
-            p1:orientation="vertical"
-            p1:minWidth="25px"
-            p1:minHeight="25px"
-            p1:id="@+id/DetailsMenuLayout"
-            p1:background="#0099CC"
-            p1:layout_width="wrap_content"
-            p1:layout_height="wrap_content"
-            p1:layout_toRightOf="@+id/GraphMenuLayout"
-            p1:layout_marginLeft="5dp">
+                p1:layout_width="wrap_content"
+                p1:layout_height="35dp"
+                p1:layout_marginRight="10dp"
+                p1:includeFontPadding="false"
+                p1:layout_marginBottom="5dp"
+                p1:typeface="sans"
+                p1:textSize="18dp"
+                p1:textStyle="normal" />
             <Button
                 p1:text="Details"
                 p1:id="@+id/DetailsMenuButton"
                 p1:background="#0099CC"
                 p1:textColor="#ffffff"
-                p1:layout_width="match_parent"
-                p1:layout_height="25dp" />
-            <LinearLayout
-                p1:orientation="horizontal"
-                p1:minHeight="10px"
-                p1:layout_width="match_parent"
-                p1:layout_height="5dp"
-                p1:id="@+id/ActiveDetailsIndicator"
-                p1:background="#0099CC"
-                p1:layout_marginTop="5dp" />
-        </LinearLayout>
-        <LinearLayout
-            p1:orientation="vertical"
-            p1:minWidth="25px"
-            p1:minHeight="25px"
-            p1:id="@+id/TemperatureMenuLayout"
-            p1:background="#0099CC"
-            p1:layout_width="wrap_content"
-            p1:layout_height="wrap_content"
-            p1:layout_toRightOf="@+id/DetailsMenuLayout"
-            p1:layout_marginLeft="5dp">
+                p1:elevation="-1dp"
+                p1:fitsSystemWindows="true"
+                p1:layout_width="wrap_content"
+                p1:layout_height="35dp"
+                p1:layout_toRightOf="@+id/GraphMenuButton"
+                p1:layout_marginRight="10dp"
+                p1:includeFontPadding="false"
+                p1:layout_marginBottom="5dp"
+                p1:typeface="sans"
+                p1:textSize="18dp"
+                p1:textStyle="normal" />
             <Button
                 p1:text="Temps"
                 p1:id="@+id/TemperatureMenuButton"
                 p1:background="#0099CC"
                 p1:textColor="#ffffff"
-                p1:layout_width="match_parent"
-                p1:layout_height="25dp" />
-            <LinearLayout
-                p1:orientation="horizontal"
-                p1:minHeight="10px"
-                p1:layout_width="match_parent"
-                p1:layout_height="5dp"
-                p1:id="@+id/ActiveTempsIndicator"
-                p1:background="#0099CC"
-                p1:layout_marginTop="5dp" />
-        </LinearLayout>
+                p1:layout_width="wrap_content"
+                p1:layout_height="35dp"
+                p1:layout_toRightOf="@+id/DetailsMenuButton"
+                p1:includeFontPadding="false"
+                p1:layout_marginBottom="5dp"
+                p1:typeface="sans"
+                p1:textSize="18dp"
+                p1:textStyle="normal" />
+        </RelativeLayout>
     </RelativeLayout>
     <RelativeLayout
         p1:minWidth="25px"
@@ -128,25 +109,28 @@
         p1:layout_width="match_parent"
         p1:layout_height="wrap_content"
         p1:id="@+id/ContentLayout"
-        p1:layout_centerInParent="true"
-        p1:layout_alignParentBottom="false"
-        p1:layout_alignParentRight="false"
-        p1:layout_alignParentTop="false"
-        p1:layout_alignParentLeft="false"
         p1:layout_alignWithParentIfMissing="false"
         p1:layout_centerVertical="false"
-        p1:layout_centerHorizontal="false"
         p1:layout_alignParentEnd="false"
-        p1:layout_alignParentStart="false" />
+        p1:layout_alignParentStart="false"
+        p1:layout_below="@+id/HeaderLayout"
+        p1:layout_above="@+id/QuickViewLayoutParent"
+        p1:layout_alignParentBottom="false"
+        p1:layout_centerInParent="false"
+        p1:layout_centerHorizontal="false"
+        p1:layout_alignParentRight="false"
+        p1:layout_alignParentTop="false" />
     <RelativeLayout
         p1:minWidth="25px"
         p1:minHeight="25px"
         p1:id="@+id/QuickViewLayoutParent"
         p1:layout_width="match_parent"
-        p1:layout_height="75dp"
+        p1:layout_height="90dp"
         p1:layout_alignParentBottom="true"
         p1:layout_centerHorizontal="true"
-        p1:background="#ffffff">
+        p1:background="#ffffff"
+        p1:elevation="30dp"
+        p1:paddingTop="10dp">
         <RelativeLayout
             p1:minWidth="25px"
             p1:minHeight="25px"
@@ -183,9 +167,10 @@
                             p1:id="@+id/QuickViewItem"
                             p1:layout_width="75dp"
                             p1:layout_height="match_parent"
-                            p1:layout_marginRight="2dp"
+                            p1:layout_marginRight="7dp"
                             p1:background="#ffffff"
-                            p1:layout_gravity="center_horizontal">
+                            p1:layout_gravity="center_horizontal"
+                            p1:elevation="10dp">
                             <LinearLayout
                                 p1:orientation="vertical"
                                 p1:minWidth="25px"
@@ -236,9 +221,10 @@
                             p1:id="@+id/QuickViewItem"
                             p1:layout_width="75dp"
                             p1:layout_height="match_parent"
-                            p1:layout_marginRight="2dp"
+                            p1:layout_marginRight="7dp"
                             p1:background="#ffffff"
-                            p1:layout_gravity="center_horizontal">
+                            p1:layout_gravity="center_horizontal"
+                            p1:elevation="10dp">
                             <LinearLayout
                                 p1:orientation="vertical"
                                 p1:minWidth="25px"
@@ -289,9 +275,226 @@
                             p1:id="@+id/QuickViewItem"
                             p1:layout_width="75dp"
                             p1:layout_height="match_parent"
-                            p1:layout_marginRight="2dp"
+                            p1:layout_marginRight="7dp"
                             p1:background="#ffffff"
-                            p1:layout_gravity="center_horizontal">
+                            p1:layout_gravity="center_horizontal"
+                            p1:elevation="10dp">
+                            <LinearLayout
+                                p1:orientation="vertical"
+                                p1:minWidth="25px"
+                                p1:minHeight="25px"
+                                p1:layout_width="match_parent"
+                                p1:layout_height="10dp"
+                                p1:id="@+id/SensorColor"
+                                p1:background="#FF4B66"
+                                p1:layout_centerHorizontal="true" />
+                            <TextView
+                                p1:text="CPU"
+                                p1:textAppearance="?android:attr/textAppearanceMedium"
+                                p1:layout_width="wrap_content"
+                                p1:layout_height="wrap_content"
+                                p1:id="@+id/SensorType"
+                                p1:textColor="#ff3b3b3b"
+                                p1:textScaleX="1"
+                                p1:textSize="20dp"
+                                p1:layout_below="@+id/SensorColor"
+                                p1:layout_centerHorizontal="true"
+                                p1:layout_marginTop="4dp" />
+                            <TextView
+                                p1:text="25"
+                                p1:textAppearance="?android:attr/textAppearanceSmall"
+                                p1:layout_width="wrap_content"
+                                p1:layout_height="wrap_content"
+                                p1:id="@+id/SensorValue"
+                                p1:layout_below="@+id/SensorType"
+                                p1:textColor="#ff3b3b3b"
+                                p1:layout_centerInParent="true"
+                                p1:layout_marginTop="2dp" />
+                            <TextView
+                                p1:text="Used Ram (MB)"
+                                p1:textAppearance="?android:attr/textAppearanceSmall"
+                                p1:layout_width="wrap_content"
+                                p1:layout_height="wrap_content"
+                                p1:id="@+id/SensorLabel"
+                                p1:layout_below="@+id/SensorValue"
+                                p1:layout_centerHorizontal="true"
+                                p1:textColor="#ff3b3b3b"
+                                p1:layout_alignParentBottom="true"
+                                p1:gravity="bottom"
+                                p1:textSize="10dp" />
+                        </RelativeLayout>
+                        <RelativeLayout
+                            p1:minWidth="25px"
+                            p1:minHeight="25px"
+                            p1:id="@+id/QuickViewItem"
+                            p1:layout_width="75dp"
+                            p1:layout_height="match_parent"
+                            p1:layout_marginRight="7dp"
+                            p1:background="#ffffff"
+                            p1:layout_gravity="center_horizontal"
+                            p1:elevation="10dp">
+                            <LinearLayout
+                                p1:orientation="vertical"
+                                p1:minWidth="25px"
+                                p1:minHeight="25px"
+                                p1:layout_width="match_parent"
+                                p1:layout_height="10dp"
+                                p1:id="@+id/SensorColor"
+                                p1:background="#FF4B66"
+                                p1:layout_centerHorizontal="true" />
+                            <TextView
+                                p1:text="CPU"
+                                p1:textAppearance="?android:attr/textAppearanceMedium"
+                                p1:layout_width="wrap_content"
+                                p1:layout_height="wrap_content"
+                                p1:id="@+id/SensorType"
+                                p1:textColor="#ff3b3b3b"
+                                p1:textScaleX="1"
+                                p1:textSize="20dp"
+                                p1:layout_below="@+id/SensorColor"
+                                p1:layout_centerHorizontal="true"
+                                p1:layout_marginTop="4dp" />
+                            <TextView
+                                p1:text="25"
+                                p1:textAppearance="?android:attr/textAppearanceSmall"
+                                p1:layout_width="wrap_content"
+                                p1:layout_height="wrap_content"
+                                p1:id="@+id/SensorValue"
+                                p1:layout_below="@+id/SensorType"
+                                p1:textColor="#ff3b3b3b"
+                                p1:layout_centerInParent="true"
+                                p1:layout_marginTop="2dp" />
+                            <TextView
+                                p1:text="Used Ram (MB)"
+                                p1:textAppearance="?android:attr/textAppearanceSmall"
+                                p1:layout_width="wrap_content"
+                                p1:layout_height="wrap_content"
+                                p1:id="@+id/SensorLabel"
+                                p1:layout_below="@+id/SensorValue"
+                                p1:layout_centerHorizontal="true"
+                                p1:textColor="#ff3b3b3b"
+                                p1:layout_alignParentBottom="true"
+                                p1:gravity="bottom"
+                                p1:textSize="10dp" />
+                        </RelativeLayout>
+                        <RelativeLayout
+                            p1:minWidth="25px"
+                            p1:minHeight="25px"
+                            p1:id="@+id/QuickViewItem"
+                            p1:layout_width="75dp"
+                            p1:layout_height="match_parent"
+                            p1:layout_marginRight="7dp"
+                            p1:background="#ffffff"
+                            p1:layout_gravity="center_horizontal"
+                            p1:elevation="10dp">
+                            <LinearLayout
+                                p1:orientation="vertical"
+                                p1:minWidth="25px"
+                                p1:minHeight="25px"
+                                p1:layout_width="match_parent"
+                                p1:layout_height="10dp"
+                                p1:id="@+id/SensorColor"
+                                p1:background="#FF4B66"
+                                p1:layout_centerHorizontal="true" />
+                            <TextView
+                                p1:text="CPU"
+                                p1:textAppearance="?android:attr/textAppearanceMedium"
+                                p1:layout_width="wrap_content"
+                                p1:layout_height="wrap_content"
+                                p1:id="@+id/SensorType"
+                                p1:textColor="#ff3b3b3b"
+                                p1:textScaleX="1"
+                                p1:textSize="20dp"
+                                p1:layout_below="@+id/SensorColor"
+                                p1:layout_centerHorizontal="true"
+                                p1:layout_marginTop="4dp" />
+                            <TextView
+                                p1:text="25"
+                                p1:textAppearance="?android:attr/textAppearanceSmall"
+                                p1:layout_width="wrap_content"
+                                p1:layout_height="wrap_content"
+                                p1:id="@+id/SensorValue"
+                                p1:layout_below="@+id/SensorType"
+                                p1:textColor="#ff3b3b3b"
+                                p1:layout_centerInParent="true"
+                                p1:layout_marginTop="2dp" />
+                            <TextView
+                                p1:text="Used Ram (MB)"
+                                p1:textAppearance="?android:attr/textAppearanceSmall"
+                                p1:layout_width="wrap_content"
+                                p1:layout_height="wrap_content"
+                                p1:id="@+id/SensorLabel"
+                                p1:layout_below="@+id/SensorValue"
+                                p1:layout_centerHorizontal="true"
+                                p1:textColor="#ff3b3b3b"
+                                p1:layout_alignParentBottom="true"
+                                p1:gravity="bottom"
+                                p1:textSize="10dp" />
+                        </RelativeLayout>
+                        <RelativeLayout
+                            p1:minWidth="25px"
+                            p1:minHeight="25px"
+                            p1:id="@+id/QuickViewItem"
+                            p1:layout_width="75dp"
+                            p1:layout_height="match_parent"
+                            p1:layout_marginRight="7dp"
+                            p1:background="#ffffff"
+                            p1:layout_gravity="center_horizontal"
+                            p1:elevation="10dp">
+                            <LinearLayout
+                                p1:orientation="vertical"
+                                p1:minWidth="25px"
+                                p1:minHeight="25px"
+                                p1:layout_width="match_parent"
+                                p1:layout_height="10dp"
+                                p1:id="@+id/SensorColor"
+                                p1:background="#FF4B66"
+                                p1:layout_centerHorizontal="true" />
+                            <TextView
+                                p1:text="CPU"
+                                p1:textAppearance="?android:attr/textAppearanceMedium"
+                                p1:layout_width="wrap_content"
+                                p1:layout_height="wrap_content"
+                                p1:id="@+id/SensorType"
+                                p1:textColor="#ff3b3b3b"
+                                p1:textScaleX="1"
+                                p1:textSize="20dp"
+                                p1:layout_below="@+id/SensorColor"
+                                p1:layout_centerHorizontal="true"
+                                p1:layout_marginTop="4dp" />
+                            <TextView
+                                p1:text="25"
+                                p1:textAppearance="?android:attr/textAppearanceSmall"
+                                p1:layout_width="wrap_content"
+                                p1:layout_height="wrap_content"
+                                p1:id="@+id/SensorValue"
+                                p1:layout_below="@+id/SensorType"
+                                p1:textColor="#ff3b3b3b"
+                                p1:layout_centerInParent="true"
+                                p1:layout_marginTop="2dp" />
+                            <TextView
+                                p1:text="Used Ram (MB)"
+                                p1:textAppearance="?android:attr/textAppearanceSmall"
+                                p1:layout_width="wrap_content"
+                                p1:layout_height="wrap_content"
+                                p1:id="@+id/SensorLabel"
+                                p1:layout_below="@+id/SensorValue"
+                                p1:layout_centerHorizontal="true"
+                                p1:textColor="#ff3b3b3b"
+                                p1:layout_alignParentBottom="true"
+                                p1:gravity="bottom"
+                                p1:textSize="10dp" />
+                        </RelativeLayout>
+                        <RelativeLayout
+                            p1:minWidth="25px"
+                            p1:minHeight="25px"
+                            p1:id="@+id/QuickViewItem"
+                            p1:layout_width="75dp"
+                            p1:layout_height="match_parent"
+                            p1:layout_marginRight="7dp"
+                            p1:background="#ffffff"
+                            p1:layout_gravity="center_horizontal"
+                            p1:elevation="10dp">
                             <LinearLayout
                                 p1:orientation="vertical"
                                 p1:minWidth="25px"

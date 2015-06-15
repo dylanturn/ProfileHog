@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:p1="http://schemas.android.com/apk/res/android"
+    p1:layout_width="match_parent"
+    p1:layout_height="match_parent"
+    p1:id="@+id/QuickViewTemplateRoot">
+    <RelativeLayout
+        p1:minWidth="25px"
+        p1:minHeight="25px"
+        p1:layout_width="90dp"
+        p1:layout_height="90dp"
+        p1:id="@+id/QuickViewTemplateContainer"
+        p1:layout_alignParentBottom="true"
+        p1:paddingTop="10dp">
+        <RelativeLayout
+            p1:minWidth="25px"
+            p1:minHeight="25px"
+            p1:id="@+id/QuickViewTemplate"
+            p1:background="#ffffff"
+            p1:elevation="10dp"
+            p1:layout_width="75dp"
+            p1:layout_height="match_parent"
+            p1:layout_marginRight="7dp"
+            p1:layout_centerHorizontal="true">
+            <LinearLayout
+                p1:orientation="vertical"
+                p1:minWidth="25px"
+                p1:minHeight="25px"
+                p1:layout_width="match_parent"
+                p1:layout_height="10dp"
+                p1:id="@+id/SensorColor"
+                p1:background="#FF4B66"
+                p1:layout_alignParentTop="true"
+                p1:layout_centerHorizontal="true" />
+            <TextView
+                p1:text="CPU"
+                p1:textAppearance="?android:attr/textAppearanceMedium"
+                p1:layout_width="wrap_content"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/SensorType"
+                p1:textColor="#ff3b3b3b"
+                p1:textScaleX="1"
+                p1:textSize="20dp"
+                p1:layout_below="@+id/SensorColor"
+                p1:layout_centerHorizontal="true"
+                p1:layout_marginTop="4dp" />
+            <TextView
+                p1:text="25"
+                p1:textAppearance="?android:attr/textAppearanceSmall"
+                p1:layout_width="wrap_content"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/SensorValue"
+                p1:layout_below="@+id/SensorType"
+                p1:textColor="#ff3b3b3b"
+                p1:layout_centerInParent="true"
+                p1:layout_marginTop="2dp" />
+            <TextView
+                p1:text="Used Ram (MB)"
+                p1:textAppearance="?android:attr/textAppearanceSmall"
+                p1:layout_width="wrap_content"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/SensorLabel"
+                p1:layout_below="@+id/SensorValue"
+                p1:layout_centerHorizontal="true"
+                p1:textColor="#ff3b3b3b"
+                p1:layout_alignParentBottom="true"
+                p1:gravity="bottom"
+                p1:textSize="10dp" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

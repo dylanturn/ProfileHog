@@ -129,7 +129,7 @@ namespace ProfileHG
 								TextView TempTitleText = new TextView (DetailsParent.Context);
 								TempTitleText.SetTextSize (ComplexUnitType.Dip, 18);
 								TempTitleText.Text = thisHardware.HardwareName;
-								TempTitleText.SetTextColor(Android.Graphics.Color.ParseColor("#FFFFFF"));
+								TempTitleText.SetTextColor(Android.Graphics.Color.ParseColor("#191919"));
 								ItemLayout.AddView (TempTitleText);
 
 								LinearLayout TitleTextSeperator = new LinearLayout(this.Activity);
@@ -137,8 +137,7 @@ namespace ProfileHG
 
 
 								//Gets the color of the hardware object by looking it up in a dictionary
-								ObjectColorDictionary colorDictionary = new ObjectColorDictionary();
-								TitleTextSeperator.SetBackgroundColor(Android.Graphics.Color.ParseColor(colorDictionary.dictionary[thisHardware.HardwareType]));
+								TitleTextSeperator.SetBackgroundColor(Android.Graphics.Color.ParseColor(ObjectColorDictionary.dictionary[thisHardware.HardwareType]));
 								LinearLayout.LayoutParams TitleSeperatorParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MatchParent, LinearLayout.LayoutParams.WrapContent);
 								TitleSeperatorParams.Height = dpiScale.GetDPI(5);
 								TitleTextSeperator.LayoutParameters = TitleSeperatorParams;
@@ -162,25 +161,25 @@ namespace ProfileHG
 								TextView sensorTitleText = new TextView (DetailsParent.Context);
 								sensorTitleText.Text = "Sensor";
 								sensorTitleText.SetTextSize (ComplexUnitType.Dip, 15);
-								sensorTitleText.SetTextColor(Android.Graphics.Color.ParseColor("#FFFFFF"));
+								sensorTitleText.SetTextColor(Android.Graphics.Color.ParseColor("#191919"));
 								sensorTitleText.LayoutParameters = sensorParams;
 
 								TextView currentTitleText = new TextView (DetailsParent.Context);
 								currentTitleText.Text = "Current";
 								currentTitleText.SetTextSize (ComplexUnitType.Dip, 15);
-								currentTitleText.SetTextColor(Android.Graphics.Color.ParseColor("#FFFFFF"));
+								currentTitleText.SetTextColor(Android.Graphics.Color.ParseColor("#191919"));
 								currentTitleText.LayoutParameters = counterParams;
 
 								TextView highestTitleText = new TextView (DetailsParent.Context);
 								highestTitleText.Text = "Highest";
 								highestTitleText.SetTextSize (ComplexUnitType.Dip, 15);
-								highestTitleText.SetTextColor(Android.Graphics.Color.ParseColor("#FFFFFF"));
+								highestTitleText.SetTextColor(Android.Graphics.Color.ParseColor("#191919"));
 								highestTitleText.LayoutParameters = counterParams;
 
 								TextView averageTitleText = new TextView (DetailsParent.Context);
 								averageTitleText.Text = "Average";
 								averageTitleText.SetTextSize (ComplexUnitType.Dip, 15);
-								averageTitleText.SetTextColor(Android.Graphics.Color.ParseColor("#FFFFFF"));
+								averageTitleText.SetTextColor(Android.Graphics.Color.ParseColor("#191919"));
 								averageTitleText.LayoutParameters = counterParams;
 
 								headerRow.AddView(sensorTitleText);

@@ -2,7 +2,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus 5 (Lollipop)" />
   <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="ProfileHG\MainActivity.cs" Line="38" Column="52" />
+      <File FileName="ProfileHG\MainActivity.cs" Line="43" Column="14" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

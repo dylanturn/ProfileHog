@@ -15,7 +15,7 @@
     <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
     <AssemblyName>ProfileHG</AssemblyName>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
-    <TargetFrameworkVersion>v4.4</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -1088,6 +1088,7 @@
     <AndroidResource Include="Resources\layout\TemperatureTableTemplate.axml" />
     <AndroidResource Include="Resources\layout\TemperatureLayout.axml" />
     <AndroidResource Include="Resources\layout\ProfileHogMain.axml" />
+    <AndroidResource Include="Resources\layout\QuickViewItemTemplate.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.profilehg">
-  <uses-sdk android:minSdkVersion="19" android:targetSdkVersion="19" />
+  <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="21" />
   <application android:label="Profile Hog" android:name="mono.android.app.Application" android:debuggable="true">
     <activity android:configChanges="orientation|screenSize" android:icon="@drawable/icon" android:label="Profile Hog" android:theme="@android:style/Theme.DeviceDefault.NoActionBar" android:name="md56bb0d634f8e536edeba3342d13f3ff08.MainActivity">
       <intent-filter>

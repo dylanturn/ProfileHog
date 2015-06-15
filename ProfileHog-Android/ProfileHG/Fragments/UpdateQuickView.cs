@@ -22,11 +22,10 @@ namespace ProfileHG
 {
 	public class UpdateQuickView
 	{
+		LinearLayout quickViewGroup;
+		List<RelativeLayout> quickViewGroupItems = new List<RelativeLayout>();
 
-		TextView cpuQuickView;
-		TextView ramQuickView;
-		TextView diskWriteQuickView;
-		TextView gpuCoreQuickView;
+		public Dictionary<Hardware.Types, string> QuickViewTypesCheckedDictionary  { get; private set; }
 
 		DataCollection dataCollection;
 		Activity ParentActivity;
@@ -36,45 +35,65 @@ namespace ProfileHG
 			dataCollection = collection;
 			ParentActivity = parentActivity;
 
-			cpuQuickView = parentActivity.FindViewById<TextView> (Resource.Id.cpuQuickViewCurrent);
-			ramQuickView = parentActivity.FindViewById<TextView> (Resource.Id.ramQuickViewCurrent);
-			diskWriteQuickView = parentActivity.FindViewById<TextView> (Resource.Id.diskQuickViewCurrent);
-			gpuCoreQuickView = parentActivity.FindViewById<TextView> (Resource.Id.gpuQuickViewCurrent);
-
+			quickViewGroup = parentActivity.FindViewById<LinearLayout> (Resource.Id.QuickViewGroup);
+			CreateDictionary ();
 		}
 
-		public void StartUIUpdate(){
+		private void CreateDictionary(){
+			QuickViewTypesCheckedDictionary = new Dictionary<Hardware.Types, string> ();
+			QuickViewTypesCheckedDictionary.Add (Hardware.Types.CPU, "CPU Total");
+			QuickViewTypesCheckedDictionary.Add (Hardware.Types.RAM, "Used Memory");
+			QuickViewTypesCheckedDictionary.Add (Hardware.Types.HDD, "DiskActive");
+			QuickViewTypesCheckedDictionary.Add (Hardware.Types.GpuNvidia, "GPU Core");
+			QuickViewTypesCheckedDictionary.Add (Hardware.Types.GpuAti, "GPU Core");
+		}
+
+		public void StartUIUpdate(LayoutInflater inflator){
 			while (true) {
-
 				foreach (Hardware thisHardware in dataCollection.HardwareList) {
-					if (thisHardware.HardwareType == Hardware.Types.CPU) {
+					if (QuickViewTypesCheckedDictionary.ContainsKey (thisHardware.HardwareType)) {
 						foreach (Sensor thisSensor in thisHardware.SensorList) {
-							if (thisSensor.SensorName == "CPU Total") {
-								ParentActivity.RunOnUiThread (() => cpuQuickView.Text = thisSensor.CurrentValue.getValue ().ToString("0"));
-							}
-						}
-					}
+							if (QuickViewTypesCheckedDictionary.ContainsValue (thisSensor.SensorName)) {
+								
+								View QuickViewItemParent = inflator.Inflate (Resource.Layout.QuickViewItemTemplate,null, false);
+								RelativeLayout QuickViewItemTemplate = (RelativeLayout) QuickViewItemParent.FindViewById (Resource.Id.QuickViewTemplate);
 
-					if (thisHardware.HardwareType == Hardware.Types.RAM) {
-						foreach (Sensor thisSensor in thisHardware.SensorList) {
-							if (thisSensor.SensorName == "Used Memory") {
-								ParentActivity.RunOnUiThread (() => ramQuickView.Text = thisSensor.CurrentValue.getValue ().ToString("0"));
-							}
-						}
-					}
+								RelativeLayout QuickViewItem = new RelativeLayout (ParentActivity);
+								QuickViewItem.Elevation = 10;
+								QuickViewItem.SetBackgroundColor(Android.Graphics.Color.ParseColor ("#ffffff"));
+								QuickViewItem.LayoutParameters = QuickViewItemTemplate.LayoutParameters;
 
-					if (thisHardware.HardwareType == Hardware.Types.HDD) {
-						foreach (Sensor thisSensor in thisHardware.SensorList) {
-							if (thisSensor.SensorName == "DiskActive") {
-								ParentActivity.RunOnUiThread (() => diskWriteQuickView.Text = thisSensor.CurrentValue.getValue ().ToString("0"));
-							}
-						}
-					}
+								LinearLayout QuickViewColorTemplate = (LinearLayout) QuickViewItemTemplate.FindViewById(Resource.Id.SensorColor);
 
-					if (thisHardware.HardwareType == Hardware.Types.GpuNvidia || thisHardware.HardwareType == Hardware.Types.GpuAti) {
-						foreach (Sensor thisSensor in thisHardware.SensorList) {
-							if (thisSensor.SensorName == "GPU Core") {
-								ParentActivity.RunOnUiThread (() => gpuCoreQuickView.Text = thisSensor.CurrentValue.getValue ().ToString("0"));
+								RelativeLayout tempItem = new RelativeLayout (ParentActivity);
+								tempItem = QuickViewItemTemplate;
+
+								TextView QuickViewTitleTemplate = (TextView) tempItem.FindViewById(Resource.Id.SensorType);
+								TextView QuickViewValueTemplate = (TextView) tempItem.FindViewById(Resource.Id.SensorValue);
+								TextView QuickViewLabelTemplate = (TextView) tempItem.FindViewById(Resource.Id.SensorLabel);
+
+								LinearLayout QuickViewColor = new LinearLayout (ParentActivity);
+								TextView QuickViewTitle = new TextView (ParentActivity);
+								TextView QuickViewValue = new TextView (ParentActivity);
+								TextView QuickViewLabel = new TextView (ParentActivity);
+
+								QuickViewColor.LayoutParameters = QuickViewColorTemplate.LayoutParameters;
+								QuickViewTitle.LayoutParameters = QuickViewTitleTemplate.LayoutParameters;
+								QuickViewValue.LayoutParameters = QuickViewValueTemplate.LayoutParameters;
+								QuickViewLabel.LayoutParameters = QuickViewLabelTemplate.LayoutParameters;
+
+								QuickViewColorTemplate.SetBackgroundColor (Android.Graphics.Color.ParseColor (ObjectColorDictionary.dictionary[thisHardware.HardwareType]));
+								QuickViewTitleTemplate.Text = thisSensor.SensorName;
+								QuickViewValueTemplate.Text = thisSensor.CurrentValue.getValue ().ToString (thisSensor.SensorValueFormat);
+								QuickViewLabelTemplate.Text = thisSensor.SensorType + " (" + thisSensor.SensorUnitType + ")";
+
+								QuickViewItem.AddView (QuickViewColor);
+								QuickViewItem.AddView (QuickViewTitle);
+								QuickViewItem.AddView (QuickViewValue);
+								QuickViewItem.AddView (QuickViewLabel);
+
+								LinearLayout quickViewGroup = (LinearLayout) ParentActivity.FindViewById (Resource.Id.QuickViewGroup);
+								ParentActivity.RunOnUiThread (() => quickViewGroup.AddView (tempItem));
 							}
 						}
 					}
