@@ -1,8 +1,0 @@
-C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG.UITests\bin\Release\ProfileHG.UITests.dll
-C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG.UITests\bin\Release\ProfileHG.UITests.pdb
-C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG.UITests\bin\Release\nunit.framework.dll
-C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG.UITests\bin\Release\Xamarin.UITest.dll
-C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG.UITests\bin\Release\nunit.framework.xml
-C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG.UITests\bin\Release\Xamarin.UITest.xml
-C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG.UITests\obj\Release\ProfileHG.UITests.dll
-C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG.UITests\obj\Release\ProfileHG.UITests.pdb
