@@ -5,6 +5,7 @@
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.VIBRATE" />
 	<uses-permission android:name="android.permission.STATUS_BAR" />
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
 	<service android:name="datacollection.DataCollection">
 		<intent-filter>
 			<action android:name="com.StudioTurnbull.DataCollection" />

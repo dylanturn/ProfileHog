@@ -29,6 +29,7 @@ namespace ProfileHG
 
 		protected override void OnCreate (Bundle bundle)
 		{
+			this.Window.SetFlags(WindowManagerFlags.KeepScreenOn, WindowManagerFlags.KeepScreenOn);
 			base.OnCreate (bundle);
 			dataCollection = new DataCollection ();
 			quickViewCards = new List<SensorCard>();
