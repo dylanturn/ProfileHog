@@ -24,18 +24,19 @@ namespace ProfileHG
 	[Activity (Theme = "@android:style/Theme.DeviceDefault.NoActionBar",Label = "Profile Hog", MainLauncher = true, Icon = "@drawable/icon", ConfigurationChanges=Android.Content.PM.ConfigChanges.Orientation | Android.Content.PM.ConfigChanges.ScreenSize)]
 	public class MainActivity : Activity
 	{
-		public DataCollection dataCollection = new DataCollection ();
-		//public UserSelectedObjects userSelectedSensors = new UserSelectedObjects ();
+		public DataCollection dataCollection;
+		public List<SensorCard> quickViewCards;
 
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-
+			dataCollection = new DataCollection ();
+			quickViewCards = new List<SensorCard>();
 			SetContentView (Resource.Layout.ProfileHogMain);
 
 			dataCollection.OnStartCommand (this.Intent, StartCommandFlags.Retry, 0);
 
-			UpdateQuickView updateQuickView = new UpdateQuickView (dataCollection, this);
+			UpdateQuickView updateQuickView = new UpdateQuickView (dataCollection, this, this);
 			Task QuickViewTask = new Task(() => updateQuickView.StartUIUpdate (this.LayoutInflater),TaskCreationOptions.LongRunning);
 			QuickViewTask.Start ();
 			

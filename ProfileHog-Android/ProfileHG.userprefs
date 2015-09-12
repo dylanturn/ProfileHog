@@ -1,8 +1,9 @@
 ﻿<Properties StartupItem="ProfileHG\Profile Hog.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus 5 (Lollipop)" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.ZX1G228PDD" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ProfileHG\Fragments\UpdateQuickView.cs">
     <Files>
-      <File FileName="ProfileHG\MainActivity.cs" Line="43" Column="14" />
+      <File FileName="ProfileHG\Fragments\UpdateQuickView.cs" Line="74" Column="56" />
+      <File FileName="ProfileHG\Fragments\UpdateDetails.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -12,5 +13,5 @@
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.Profile_220Hog AndroidDesignerPreferredDevice="3.7&quot; WVGA (Nexus One)" AndroidDesignerPreferredTheme="Theme.DeviceDefault.Dialog.NoActionBar" />
+  <MonoDevelop.Ide.ItemProperties.Profile_220Hog AndroidDesignerPreferredDevice="Nexus 5" AndroidDesignerPreferredTheme="Theme.DeviceDefault.Dialog.NoActionBar" />
 </Properties>

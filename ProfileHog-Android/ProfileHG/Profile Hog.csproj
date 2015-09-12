@@ -64,6 +64,7 @@
     <Compile Include="Fragments\UpdateQuickView.cs" />
     <Compile Include="Fragments\TemperatureFragment.cs" />
     <Compile Include="Fragments\DetailsFragment.cs" />
+    <Compile Include="SensorCard.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -1088,11 +1089,11 @@
     <AndroidResource Include="Resources\layout\TemperatureTableTemplate.axml" />
     <AndroidResource Include="Resources\layout\TemperatureLayout.axml" />
     <AndroidResource Include="Resources\layout\ProfileHogMain.axml" />
-    <AndroidResource Include="Resources\layout\QuickViewItemTemplate.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
     <Folder Include="DataTypes\" />
     <Folder Include="Fragments\" />
+    <Folder Include="New Folder\" />
   </ItemGroup>
 </Project>

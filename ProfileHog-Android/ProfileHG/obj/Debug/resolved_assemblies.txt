@@ -1,1 +1,9 @@
-C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG\bin\Debug\ProfileHG.dll
+C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG\obj\Debug\assemblies\ProfileHG.dll
+C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG\obj\Debug\assemblies\Mono.Android.dll
+C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG\obj\Debug\assemblies\mscorlib.dll
+C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG\obj\Debug\assemblies\System.Core.dll
+C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG\obj\Debug\assemblies\System.dll
+C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG\obj\Debug\assemblies\System.Json.dll
+C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG\obj\Debug\assemblies\System.Net.dll
+C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG\obj\Debug\assemblies\System.Windows.dll
+C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG\obj\Debug\assemblies\System.Xml.dll
