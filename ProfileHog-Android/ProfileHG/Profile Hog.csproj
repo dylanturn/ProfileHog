@@ -15,7 +15,7 @@
     <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
     <AssemblyName>ProfileHG</AssemblyName>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
-    <TargetFrameworkVersion>v4.4</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -64,6 +64,7 @@
     <Compile Include="Fragments\UpdateQuickView.cs" />
     <Compile Include="Fragments\TemperatureFragment.cs" />
     <Compile Include="Fragments\DetailsFragment.cs" />
+    <Compile Include="SensorCard.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -1087,10 +1088,12 @@
     <AndroidResource Include="Resources\drawable-hdpi\ic_action_youtube.png" />
     <AndroidResource Include="Resources\layout\TemperatureTableTemplate.axml" />
     <AndroidResource Include="Resources\layout\TemperatureLayout.axml" />
+    <AndroidResource Include="Resources\layout\ProfileHogMain.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
     <Folder Include="DataTypes\" />
     <Folder Include="Fragments\" />
+    <Folder Include="New Folder\" />
   </ItemGroup>
 </Project>

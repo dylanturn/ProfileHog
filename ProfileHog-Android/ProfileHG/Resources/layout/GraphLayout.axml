@@ -6,7 +6,7 @@
     android:minWidth="25px"
     android:minHeight="25px"
     android:alpha=".75"
-    android:background="#4B597C">
+    android:background="#ffffff">
     <RelativeLayout
         android:minWidth="25px"
         android:minHeight="25px"

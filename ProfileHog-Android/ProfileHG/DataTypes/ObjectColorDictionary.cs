@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace ProfileHG
 {
-	public class ObjectColorDictionary
+	public static class ObjectColorDictionary
 	{
-		public Dictionary<Hardware.Types, string> dictionary  { get; private set; }
+		public static Dictionary<Hardware.Types, string> dictionary  { get; private set; }
 
-		public ObjectColorDictionary ()
+		static ObjectColorDictionary ()
 		{
 			dictionary = new Dictionary<Hardware.Types, string>();
 
@@ -21,6 +21,8 @@ namespace ProfileHG
 			dictionary.Add (Hardware.Types.SuperIO, "#FFFFFF"); //I need to find a color for this.
 			dictionary.Add (Hardware.Types.TBalancer, "#FFFFFF"); //I need to find a color for this.
 		}
+
+
 	}
 }
 

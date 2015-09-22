@@ -45,24 +45,24 @@ namespace ProfileHG
 
 			sensorName.Text = thisSensor.SensorName;
 			sensorName.SetTextSize (ComplexUnitType.Dip, 15);
-			sensorName.SetTextColor(Android.Graphics.Color.ParseColor("#FFFFFF"));
+			sensorName.SetTextColor(Android.Graphics.Color.ParseColor("#191919"));
 
 			sensorValue.Text = thisSensor.CurrentValue.getValue ().ToString (thisSensor.SensorValueFormat) + " " + thisSensor.SensorUnitType;
 			sensorValue.SetTextSize (ComplexUnitType.Dip, 15);
 			sensorValue.Gravity = GravityFlags.Center;
-			sensorValue.SetTextColor(Android.Graphics.Color.ParseColor("#FFFFFF"));
+			sensorValue.SetTextColor(Android.Graphics.Color.ParseColor("#191919"));
 			sensorValue.LayoutParameters = counterParams;
 
 			highestValue.Text = thisSensor.HighestValue.getValue ().ToString (thisSensor.SensorValueFormat) + " " + thisSensor.SensorUnitType;
 			highestValue.SetTextSize (ComplexUnitType.Dip, 15);
 			highestValue.Gravity = GravityFlags.Center;
-			highestValue.SetTextColor(Android.Graphics.Color.ParseColor("#FFFFFF"));
+			highestValue.SetTextColor(Android.Graphics.Color.ParseColor("#191919"));
 			highestValue.LayoutParameters = counterParams;
 
 			averageValue.Text = thisSensor.AverageValue.getValue ().ToString (thisSensor.SensorValueFormat) + " " + thisSensor.SensorUnitType;
 			averageValue.SetTextSize (ComplexUnitType.Dip, 15);
 			averageValue.Gravity = GravityFlags.Center;
-			averageValue.SetTextColor(Android.Graphics.Color.ParseColor("#FFFFFF"));
+			averageValue.SetTextColor(Android.Graphics.Color.ParseColor("#191919"));
 			averageValue.LayoutParameters = counterParams;
 		}
 

@@ -69,10 +69,6 @@ namespace ProfileHG
 		public void setCurrentValue(double value){
 
 			SensorValue newItem;
-
-			if ((this.SensorType == Types.Temperature) && (this.SensorParent.HardwareType == Hardware.Types.GpuNvidia)) {
-				Console.WriteLine (this.SensorName + " : " + value.ToString());
-			}
 			//Im doing this because I prefer to show memory used in MB.
 			//One day GB will preffered, but I don't think we're quire there yet.
 			if ((this.SensorType == Types.Data) && (this.SensorParent.HardwareType == Hardware.Types.RAM)) {

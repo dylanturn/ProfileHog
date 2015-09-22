@@ -38,6 +38,8 @@ namespace ProfileHG
 			Console.WriteLine ("SimpleService", "SimpleService stopped");      
 		}
 
+		// This needs to get redone.  If you have more than one computer in the house you should be prompted to choose
+		// which machine you want to connect to.
 		private Socket ConnectToServer(TcpListener newListner){
 			bool isConnected = false;
 			Console.WriteLine("Creating Broadcast Socket");
@@ -186,7 +188,6 @@ namespace ProfileHG
 
 								// If we find the sensor we just go ahead and update the value.
 								if(foundSensor.SensorName != null){
-									Console.WriteLine("Found: {0} Type: {1} Value: {2}", foundSensor.SensorName,(string)sensorObject ["Type"], (float?)sensorObject ["Value"]);
 									foundSensor.setCurrentValue(Convert.ToDouble((float?)sensorObject ["Value"]));
 								}
 
