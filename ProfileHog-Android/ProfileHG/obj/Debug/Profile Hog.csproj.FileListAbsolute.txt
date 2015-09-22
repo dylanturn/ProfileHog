@@ -2041,3 +2041,4 @@ C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG\obj\Debu
 C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG\obj\Debug\res\layout\profilehogmain.xml
 C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG\obj\Debug\R.cs.flag
 C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG\obj\Debug\uploadflags.txt
+C:\Users\Dylan\Documents\GitHub\ProfileHog\ProfileHog-Android\ProfileHG\obj\Debug\Profile Hog.csprojResolveAssemblyReference.cache
