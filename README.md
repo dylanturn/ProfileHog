@@ -20,9 +20,16 @@ The interface is broken up into 3 sections, ***Section Menu***, ***Section Metri
 | ------------- |
 | ![Screenshots](Images/ProfileHogAnatomy.png) |
 
-| Utilization Details |
-| ------------- |
-| ![Screenshots](Images/ProfileHogAnatomy.png) | ![Screenshots](Images/phTemp.png) |
+### ProfileHog Overhead
+ProfileHog is light.  It should generally consume less than 30MB of ram and for the most part leave your CPU alone.  If you experience resource utilization above what I have outlined please let me know.  I have a limited number of system to test this application on and any input would be greatly appriciated.
 
+###### Windows Task Manager
+![Screenshots](Images/ProfileHogConsole-TaskManager.PNG)
+
+###### Visual Studios Profiler Output
+![Screenshots](Images/ProfileHogConsole.PNG)
+
+### Moving Forward
+As stated in the note below the summary I have every intention of rebuilding Profile Hog. In doing so I will include lessons learned as well as any feedback about the current iteration.  I'll also read a style guide. *I promise*.
 
 
