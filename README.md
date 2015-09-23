@@ -10,6 +10,12 @@ Profile Hog is a second screen Andriod app that leverages the [Open Hardware Mon
 To initiate a connection simply ensure your computer is on the same network as your Andriod device and start both the Andriod and Windows application. Using a UDP broadcast the two devices will locate eachother and begin tranmitting data.
 
 ###### The Interface
+The interface is broken up into 3 sections, ***Graph*** (not shown), ***Details***, ***Temps***, and ***QuickView Cards***. 
+
+* The Graph section will one day contain a graph that will plot the history of metric items of your choice.
+* Details shows the computers current, average and high resource utilization metrics.
+* Temps shows the computers current, average, and high temperature measurements by component.
+* QuickView Cards display a user defined list of metrics at the bottom of every section.  This is designed to act as a way to allow the user to view component temperature while keeping an eye on CPU utilization.
 
 | Utilization Details | Temperature Details |
 | ------------- | ----------- |
